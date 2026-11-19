@@ -20,97 +20,57 @@
   --muted:#718078;
   --white:#fff;
   --red:#c0392b;
-  --orange:#e69522;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 
 header{
-  background:white;
-  padding:17px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:15px;
-  box-shadow:0 2px 12px #0000000c;
-  position:sticky;
-  top:0;
-  z-index:10;
+  background:white;padding:17px 6%;display:flex;
+  justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:15px;box-shadow:0 2px 12px #0000000c;
+  position:sticky;top:0;z-index:10;
 }
-
 .logo{font-size:23px;font-weight:bold;color:var(--green)}
 nav{display:flex;gap:19px;flex-wrap:wrap;align-items:center}
-nav a{
-  text-decoration:none;
-  color:#33443b;
-  font-weight:bold;
-  font-size:14px;
-}
+nav a{text-decoration:none;color:#33443b;font-weight:bold;font-size:14px}
 nav a:hover{color:var(--green)}
 
 .container{max-width:1150px;margin:auto}
 
 .hero{
-  padding:85px 7%;
-  text-align:center;
+  padding:85px 7%;text-align:center;
   background:linear-gradient(135deg,#e3f8ed,#f5fff8);
 }
-
 .hero h1{
   font-size:clamp(32px,6vw,52px);
-  color:var(--green);
-  margin-bottom:20px;
+  color:var(--green);margin-bottom:20px;
 }
-
 .hero p{
-  max-width:700px;
-  margin:auto;
-  line-height:1.8;
-  font-size:18px;
-  color:#506359;
+  max-width:700px;margin:auto;line-height:1.8;
+  font-size:18px;color:#506359;
 }
 
 .btn{
-  display:inline-block;
-  border:0;
-  background:var(--green);
-  color:white;
-  padding:13px 22px;
-  border-radius:9px;
-  font-weight:bold;
-  text-decoration:none;
-  margin-top:18px;
+  display:inline-block;border:0;background:var(--green);
+  color:white;padding:13px 22px;border-radius:9px;
+  font-weight:bold;text-decoration:none;margin-top:18px;
 }
-
 .btn:hover{background:#056447}
-.btn.secondary{background:#e5f4eb;color:var(--green)}
 .btn.danger{background:var(--red)}
 .btn.small{padding:9px 13px;font-size:13px;margin:4px}
 
 section{padding:60px 7%}
-
 .section-title{
-  text-align:center;
-  font-size:32px;
-  color:var(--green);
-  margin-bottom:14px;
+  text-align:center;font-size:32px;
+  color:var(--green);margin-bottom:14px;
 }
-
 .subtitle{
-  text-align:center;
-  color:var(--muted);
-  margin-bottom:35px;
-  line-height:1.6;
+  text-align:center;color:var(--muted);
+  margin-bottom:35px;line-height:1.6;
 }
 
 .cards{
@@ -118,186 +78,96 @@ section{padding:60px 7%}
   grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
   gap:22px;
 }
-
 .card{
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 5px 20px #00000009;
-  border:1px solid #e9f0eb;
+  background:white;padding:25px;border-radius:15px;
+  box-shadow:0 5px 20px #00000009;border:1px solid #e9f0eb;
 }
-
 .card h3{color:var(--green);margin-bottom:12px}
 .card p{line-height:1.7;color:#647269}
-.emoji{font-size:36px;margin-bottom:14px}
-
 .campaign-image{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:10px;
-  margin-bottom:15px;
-  background:#eaf7ef;
+  width:100%;height:180px;object-fit:cover;
+  border-radius:10px;margin-bottom:15px;background:#eaf7ef;
 }
-
 .progress{
-  background:#e4eee7;
-  height:9px;
-  border-radius:20px;
-  margin:15px 0;
-  overflow:hidden;
+  background:#e4eee7;height:9px;border-radius:20px;
+  margin:15px 0;overflow:hidden;
 }
-
-.progress div{
-  background:var(--green);
-  height:100%;
-}
-
+.progress div{background:var(--green);height:100%}
 .money{color:var(--green);font-weight:bold}
 .status{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:12px;
-  background:#eaf7ef;
-  color:var(--green);
+  display:inline-block;padding:6px 10px;border-radius:20px;
+  font-size:12px;background:#eaf7ef;color:var(--green);
   font-weight:bold;
 }
 
 .about{background:var(--light);text-align:center}
 .about p{
-  max-width:780px;
-  margin:auto;
-  line-height:1.9;
-  color:#53655b;
-  font-size:17px;
+  max-width:780px;margin:auto;line-height:1.9;
+  color:#53655b;font-size:17px;
 }
-
 .transparency{background:white}
-
 .notice{
-  max-width:850px;
-  margin:auto;
-  background:#f0faf4;
-  border-left:5px solid var(--green);
-  padding:25px;
-  border-radius:8px;
-  line-height:1.8;
-  color:#46584d;
+  max-width:850px;margin:auto;background:#f0faf4;
+  border-left:5px solid var(--green);padding:25px;
+  border-radius:8px;line-height:1.8;color:#46584d;
 }
 
-.panel{
-  background:#edf5ef;
-  padding:55px 6%;
-  min-height:400px;
-}
-
+.panel{background:#edf5ef;padding:55px 6%;min-height:300px}
 .panel-box{
-  max-width:1100px;
-  margin:auto;
-  background:white;
-  padding:25px;
-  border-radius:15px;
+  max-width:1100px;margin:auto;background:white;
+  padding:25px;border-radius:15px;
   box-shadow:0 5px 20px #00000009;
 }
-
 .panel h2{color:var(--green);margin-bottom:20px}
 
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
+.login-box{
+  max-width:420px;margin:30px auto;background:white;
+  padding:28px;border-radius:15px;
+  box-shadow:0 5px 25px #0000000b;
 }
-
 .field{margin-bottom:15px}
 .field label{
-  display:block;
-  font-weight:bold;
-  font-size:14px;
-  margin-bottom:7px;
+  display:block;font-weight:bold;font-size:14px;margin-bottom:7px;
 }
-
 .field input,.field textarea,.field select{
-  width:100%;
-  padding:12px;
-  border:1px solid #dce7df;
-  border-radius:8px;
-  background:white;
-  outline:none;
+  width:100%;padding:12px;border:1px solid #dce7df;
+  border-radius:8px;background:white;outline:none;
 }
-
-.field input:focus,.field textarea:focus{
-  border-color:var(--green);
-}
-
+.field input:focus,.field textarea:focus{border-color:var(--green)}
 .field textarea{min-height:100px;resize:vertical}
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:15px;
-  margin-bottom:25px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:15px;margin-bottom:25px;
 }
-
-.stat{
-  background:#eff9f2;
-  padding:20px;
-  border-radius:12px;
-}
-
+.stat{background:#eff9f2;padding:20px;border-radius:12px}
 .stat span{display:block;color:#65766b;font-size:13px}
 .stat strong{display:block;font-size:23px;color:var(--green);margin-top:8px}
 
 .table-wrap{overflow-x:auto;margin-top:20px}
-
 table{width:100%;border-collapse:collapse;min-width:600px}
 th,td{
-  text-align:left;
-  padding:13px;
-  border-bottom:1px solid #edf0ed;
+  text-align:left;padding:13px;border-bottom:1px solid #edf0ed;
   font-size:13px;
 }
 th{background:#f0f7f2;color:var(--green)}
 
-.login-box{
-  max-width:420px;
-  margin:30px auto;
-  background:white;
-  padding:28px;
-  border-radius:15px;
-  box-shadow:0 5px 25px #0000000b;
-}
-
 .hidden{display:none!important}
-
 .message{
-  padding:13px;
-  border-radius:8px;
-  margin:12px 0;
-  font-size:14px;
-  line-height:1.5;
-  background:#eaf7ef;
-  color:var(--green);
+  padding:13px;border-radius:8px;margin:12px 0;
+  font-size:14px;line-height:1.5;
+  background:#eaf7ef;color:var(--green);
 }
-
 .message.error{background:#fff0ef;color:var(--red)}
-
 .empty{
-  text-align:center;
-  padding:35px;
-  color:var(--muted);
-  background:white;
-  border-radius:12px;
+  text-align:center;padding:35px;color:var(--muted);
+  background:white;border-radius:12px;
 }
 
 footer{
-  background:var(--dark);
-  color:white;
-  text-align:center;
-  padding:35px 15px;
-  line-height:2;
+  background:var(--dark);color:white;text-align:center;
+  padding:35px 15px;line-height:2;
 }
-
 footer strong{color:#9ce7bd}
 
 @media(max-width:650px){
@@ -315,13 +185,12 @@ footer strong{color:#9ce7bd}
 
 <header>
   <div class="logo">❤️ Corrente do Bem</div>
-
   <nav>
     <a href="#inicio">Início</a>
     <a href="#campanhas">Campanhas</a>
     <a href="#sobre">Sobre</a>
     <a href="#transparencia">Transparência</a>
-    <a href="#acesso">Acesso</a>
+    <a href="#administracao">Administração</a>
   </nav>
 </header>
 
@@ -329,13 +198,11 @@ footer strong{color:#9ce7bd}
 
 <section class="hero" id="inicio">
   <h1>Juntos podemos transformar vidas!</h1>
-
   <p>
     Uma corrente de solidariedade que conecta pessoas
     que precisam de ajuda a pessoas dispostas a fazer o bem.
     Cada gesto de carinho pode mudar uma história.
   </p>
-
   <a class="btn" href="#campanhas">Conheça nossas campanhas</a>
 </section>
 
@@ -345,7 +212,6 @@ footer strong{color:#9ce7bd}
     <p class="subtitle">
       Conheça as iniciativas que fazem parte da nossa corrente.
     </p>
-
     <div id="campaignList" class="cards">
       <div class="empty">Carregando campanhas...</div>
     </div>
@@ -354,7 +220,6 @@ footer strong{color:#9ce7bd}
 
 <section class="about" id="sobre">
   <h2 class="section-title">Sobre a Corrente do Bem</h2>
-
   <p>
     Nosso propósito é construir uma plataforma baseada na
     solidariedade, responsabilidade e confiança.
@@ -364,10 +229,7 @@ footer strong{color:#9ce7bd}
 
 <section class="transparency" id="transparencia">
   <h2 class="section-title">Transparência e confiança</h2>
-
-  <p class="subtitle">
-    A confiança é a base da nossa corrente.
-  </p>
+  <p class="subtitle">A confiança é a base da nossa corrente.</p>
 
   <div class="notice">
     <strong>Nosso compromisso:</strong><br>
@@ -375,199 +237,132 @@ footer strong{color:#9ce7bd}
     e apresentar informações claras sobre a utilização
     dos recursos. Cada campanha deverá ter informações
     e comprovantes para acompanhamento público.
+
     <br><br>
+
     <strong>Prestação de contas:</strong>
     Os dados financeiros públicos serão apresentados
     sem expor informações pessoais dos doadores.
+
     <div id="publicFinance" style="margin-top:15px">
-      Os indicadores públicos estão em configuração.
+      Carregando indicadores financeiros...
     </div>
   </div>
 </section>
 
-<!-- ACESSO -->
+<!-- ADMINISTRAÇÃO EXCLUSIVA -->
 
-<section class="panel" id="acesso">
+<section class="panel" id="administracao">
   <div class="panel-box">
 
     <div id="loginArea">
-      <h2>🔐 Acesso à plataforma</h2>
+      <h2>🔐 Administração</h2>
       <p style="color:#718078;margin-bottom:20px">
-        Entre com sua conta cadastrada no Corrente do Bem.
+        Área exclusiva da equipe responsável pela Corrente do Bem.
       </p>
 
       <form id="loginForm" class="login-box">
         <div class="field">
-          <label>E-mail</label>
-          <input id="loginEmail" type="email" required
-          placeholder="Seu e-mail">
+          <label>E-mail administrativo</label>
+          <input id="loginEmail" type="email"
+            autocomplete="username" required
+            placeholder="E-mail do administrador">
         </div>
 
         <div class="field">
           <label>Senha</label>
           <input id="loginPassword" type="password"
-          required placeholder="Sua senha">
+            autocomplete="current-password" required
+            placeholder="Sua senha">
         </div>
 
-        <button class="btn" type="submit" style="width:100%">
-          Entrar
+        <button class="btn" type="submit"
+          id="loginButton" style="width:100%">
+          Entrar na administração
         </button>
 
         <div id="loginMessage" aria-live="polite"></div>
       </form>
     </div>
 
-    <div id="userArea" class="hidden">
-      <h2>Minha conta</h2>
-      <p id="userEmail"></p>
+    <div id="adminArea" class="hidden">
 
-      <button class="btn danger" id="logoutButton">
-        Sair da conta
-      </button>
-
-      <div id="campaignFormArea" class="hidden" style="margin-top:30px">
-        <hr style="border:0;border-top:1px solid #eee;margin-bottom:25px">
-
-        <h2>📢 Cadastrar campanha</h2>
-
-        <form id="campaignForm">
-
-          <div class="field">
-            <label>Título da campanha</label>
-            <input id="campaignTitle" maxlength="150" required>
-          </div>
-
-          <div class="field">
-            <label>Descrição</label>
-            <textarea id="campaignDescription" required></textarea>
-          </div>
-
-          <div class="form-grid">
-            <div class="field">
-              <label>Categoria</label>
-              <select id="campaignCategory" required>
-                <option value="">Selecione</option>
-                <option value="Animais">Animais</option>
-                <option value="Pessoas">Pessoas</option>
-                <option value="Saúde">Saúde</option>
-                <option value="Ações solidárias">Ações solidárias</option>
-                <option value="Outros">Outros</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label>Meta financeira (R$)</label>
-              <input id="campaignGoal" type="number"
-              min="1" step="0.01" required>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Imagem da campanha (URL opcional)</label>
-            <input id="campaignImage" type="url"
-            placeholder="https://...">
-          </div>
-
-          <button class="btn" type="submit">
-            Enviar para aprovação
-          </button>
-
-          <div id="campaignMessage" aria-live="polite"></div>
-        </form>
-      </div>
-
-      <div id="adminArea" class="hidden" style="margin-top:35px">
-
-        <hr style="border:0;border-top:1px solid #eee;margin-bottom:25px">
-
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
         <h2>🛡️ Painel administrativo</h2>
-
-        <p style="color:#718078;margin-bottom:20px">
-          Gerenciamento de campanhas, doações e movimentações.
-        </p>
-
-        <div class="stats">
-          <div class="stat">
-            <span>Doações confirmadas</span>
-            <strong id="statConfirmed">—</strong>
-          </div>
-
-          <div class="stat">
-            <span>Total arrecadado</span>
-            <strong id="statTotal">—</strong>
-          </div>
-
-          <div class="stat">
-            <span>Doações pendentes</span>
-            <strong id="statPending">—</strong>
-          </div>
-
-          <div class="stat">
-            <span>Total pendente</span>
-            <strong id="statPendingTotal">—</strong>
-          </div>
-        </div>
-
-        <h2>📋 Gerenciar campanhas</h2>
-
-        <div id="adminCampaigns" class="table-wrap">
-          Carregando...
-        </div>
-
-        <h2 style="margin-top:35px">💚 Controle de doações</h2>
-
-        <p style="color:#718078;font-size:13px;margin-bottom:15px">
-          Confirme somente doações cujo recebimento foi verificado.
-        </p>
-
-        <div id="adminDonations" class="table-wrap">
-          Carregando...
-        </div>
-
-        <h2 style="margin-top:35px">💰 Registrar movimentação</h2>
-
-        <form id="movementForm">
-
-          <div class="form-grid">
-            <div class="field">
-              <label>Tipo</label>
-              <select id="movementType" required>
-                <option value="entrada">Entrada</option>
-                <option value="saida">Saída</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label>Valor (R$)</label>
-              <input id="movementValue" type="number"
-              min="0.01" step="0.01" required>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Descrição</label>
-            <input id="movementDescription" maxlength="300" required>
-          </div>
-
-          <div class="field">
-            <label>Comprovante (URL opcional)</label>
-            <input id="movementProof" type="url">
-          </div>
-
-          <button class="btn" type="submit">
-            Registrar movimentação
-          </button>
-
-          <div id="movementMessage" aria-live="polite"></div>
-        </form>
-
-        <h2 style="margin-top:35px">📑 Histórico financeiro</h2>
-
-        <div id="adminMovements" class="table-wrap">
-          Carregando...
-        </div>
-
+        <button class="btn danger" id="logoutButton">Sair</button>
       </div>
+
+      <p id="adminEmail" style="color:#718078;margin-bottom:20px"></p>
+
+      <p style="color:#718078;margin-bottom:20px">
+        Gerenciamento de campanhas, doações e movimentações financeiras.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <span>Doações confirmadas</span>
+          <strong id="statConfirmed">—</strong>
+        </div>
+        <div class="stat">
+          <span>Total arrecadado</span>
+          <strong id="statTotal">—</strong>
+        </div>
+        <div class="stat">
+          <span>Doações pendentes</span>
+          <strong id="statPending">—</strong>
+        </div>
+        <div class="stat">
+          <span>Total pendente</span>
+          <strong id="statPendingTotal">—</strong>
+        </div>
+      </div>
+
+      <h2>📋 Gerenciar campanhas</h2>
+      <div id="adminCampaigns" class="table-wrap">Carregando...</div>
+
+      <h2 style="margin-top:35px">💚 Controle de doações</h2>
+      <p style="color:#718078;font-size:13px;margin-bottom:15px">
+        Confirme somente doações cujo recebimento foi verificado.
+      </p>
+      <div id="adminDonations" class="table-wrap">Carregando...</div>
+
+      <h2 style="margin-top:35px">💰 Registrar movimentação</h2>
+
+      <form id="movementForm">
+        <div class="form-grid">
+          <div class="field">
+            <label>Tipo</label>
+            <select id="movementType" required>
+              <option value="entrada">Entrada</option>
+              <option value="saida">Saída</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Valor (R$)</label>
+            <input id="movementValue" type="number"
+              min="0.01" step="0.01" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Descrição</label>
+          <input id="movementDescription" maxlength="300" required>
+        </div>
+
+        <div class="field">
+          <label>Comprovante (URL opcional)</label>
+          <input id="movementProof" type="url">
+        </div>
+
+        <button class="btn" type="submit" id="movementButton">
+          Registrar movimentação
+        </button>
+        <div id="movementMessage" aria-live="polite"></div>
+      </form>
+
+      <h2 style="margin-top:35px">📑 Histórico financeiro</h2>
+      <div id="adminMovements" class="table-wrap">Carregando...</div>
+
     </div>
   </div>
 </section>
@@ -624,9 +419,8 @@ function money(value) {
 
 function message(id, text, error=false) {
   const el = $(id);
-  el.innerHTML = "";
-  el.className = "message" + (error ? " error" : "");
   el.textContent = text;
+  el.className = "message" + (error ? " error" : "");
 }
 
 function showError(id, error) {
@@ -635,20 +429,17 @@ function showError(id, error) {
 }
 
 // ======================================
-// CARREGAR CAMPANHAS
+// CAMPANHAS PÚBLICAS
 // ======================================
 
 async function loadCampaigns() {
-
   const container = $("campaignList");
 
-  let query = db
+  const {data, error} = await db
     .from("campanhas")
     .select("*")
     .eq("status", "aprovada")
     .order("criado_em", {ascending:false});
-
-  const {data, error} = await query;
 
   if(error) {
     console.error(error);
@@ -664,7 +455,6 @@ async function loadCampaigns() {
   }
 
   container.innerHTML = data.map(c => {
-
     const goal = Number(c.meta || 0);
     const raised = Number(c.valor_arrecadado || 0);
 
@@ -684,9 +474,7 @@ async function loadCampaigns() {
       <article class="card">
         ${image}
         <span class="status">Campanha aprovada</span>
-        <h3 style="margin-top:14px">
-          ${escapeHTML(c.titulo)}
-        </h3>
+        <h3 style="margin-top:14px">${escapeHTML(c.titulo)}</h3>
         <p>${escapeHTML(c.descricao)}</p>
         <p style="margin-top:12px">
           <strong>Categoria:</strong>
@@ -706,11 +494,10 @@ async function loadCampaigns() {
 }
 
 // ======================================
-// AUTENTICAÇÃO
+// AUTENTICAÇÃO ADMINISTRATIVA
 // ======================================
 
 async function checkAdmin() {
-
   if(!currentUser) return false;
 
   const {data, error} = await db.rpc("is_admin");
@@ -723,46 +510,56 @@ async function checkAdmin() {
   return data === true;
 }
 
+function showLogin() {
+  $("loginArea").classList.remove("hidden");
+  $("adminArea").classList.add("hidden");
+  $("adminEmail").textContent = "";
+}
+
 async function updateInterface() {
-
   if(!currentUser) {
+    isAdmin = false;
+    showLogin();
+    return;
+  }
 
-    $("loginArea").classList.remove("hidden");
-    $("userArea").classList.add("hidden");
-    $("adminArea").classList.add("hidden");
-    $("campaignFormArea").classList.add("hidden");
+  isAdmin = await checkAdmin();
+
+  if(!isAdmin) {
+    console.warn("Conta sem permissão administrativa.");
+
+    currentUser = null;
+
+    await db.auth.signOut();
+    showLogin();
+
+    message(
+      "loginMessage",
+      "Esta conta não possui permissão de administrador.",
+      true
+    );
 
     return;
   }
 
   $("loginArea").classList.add("hidden");
-  $("userArea").classList.remove("hidden");
+  $("adminArea").classList.remove("hidden");
 
-  $("userEmail").textContent =
-    "Conectado: " + currentUser.email;
+  $("adminEmail").textContent =
+    "Administrador conectado: " + currentUser.email;
 
-  isAdmin = await checkAdmin();
-
-  $("campaignFormArea").classList.remove("hidden");
-
-  if(isAdmin) {
-    $("adminArea").classList.remove("hidden");
-    await loadAdminData();
-  } else {
-    $("adminArea").classList.add("hidden");
-  }
+  await loadAdminData();
 }
 
 $("loginForm").addEventListener("submit", async e => {
-
   e.preventDefault();
 
   const email = $("loginEmail").value.trim();
   const password = $("loginPassword").value;
+  const button = $("loginButton");
 
-  const button = e.submitter;
   button.disabled = true;
-  button.textContent = "Entrando...";
+  button.textContent = "Verificando acesso...";
 
   const {data, error} = await db.auth.signInWithPassword({
     email,
@@ -770,7 +567,7 @@ $("loginForm").addEventListener("submit", async e => {
   });
 
   button.disabled = false;
-  button.textContent = "Entrar";
+  button.textContent = "Entrar na administração";
 
   if(error) {
     showError("loginMessage", error);
@@ -781,12 +578,12 @@ $("loginForm").addEventListener("submit", async e => {
 
   await updateInterface();
 
-  message("loginMessage", "Login realizado com sucesso!");
-
+  if(isAdmin) {
+    message("loginMessage", "Acesso administrativo autorizado!");
+  }
 });
 
 $("logoutButton").addEventListener("click", async () => {
-
   const {error} = await db.auth.signOut();
 
   if(error) {
@@ -797,58 +594,8 @@ $("logoutButton").addEventListener("click", async () => {
   currentUser = null;
   isAdmin = false;
 
-  await updateInterface();
-
-  window.location.reload();
-});
-
-// ======================================
-// CADASTRAR CAMPANHAS
-// ======================================
-
-$("campaignForm").addEventListener("submit", async e => {
-
-  e.preventDefault();
-
-  if(!currentUser) {
-    alert("Faça login para cadastrar uma campanha.");
-    return;
-  }
-
-  const button = e.submitter;
-  button.disabled = true;
-  button.textContent = "Enviando...";
-
-  const campaign = {
-    titulo: $("campaignTitle").value.trim(),
-    descricao: $("campaignDescription").value.trim(),
-    categoria: $("campaignCategory").value,
-    meta: Number($("campaignGoal").value),
-    valor_arrecadado: 0,
-    imagem_url: $("campaignImage").value.trim() || null,
-    status: "pendente",
-    criado_por: currentUser.id
-  };
-
-  const {error} = await db
-    .from("campanhas")
-    .insert(campaign);
-
-  button.disabled = false;
-  button.textContent = "Enviar para aprovação";
-
-  if(error) {
-    showError("campaignMessage", error);
-    return;
-  }
-
-  $("campaignForm").reset();
-
-  message(
-    "campaignMessage",
-    "Campanha enviada! Ela ficará pendente até a análise do administrador."
-  );
-
+  showLogin();
+  message("loginMessage", "Você saiu da administração.");
 });
 
 // ======================================
@@ -856,7 +603,6 @@ $("campaignForm").addEventListener("submit", async e => {
 // ======================================
 
 async function loadAdminData() {
-
   if(!isAdmin) return;
 
   await Promise.all([
@@ -872,7 +618,6 @@ async function loadAdminData() {
 // ======================================
 
 async function loadAdminCampaigns() {
-
   const box = $("adminCampaigns");
 
   const {data, error} = await db
@@ -885,8 +630,9 @@ async function loadAdminCampaigns() {
     return;
   }
 
-  if(!data.length) {
-    box.innerHTML = '<div class="empty">Nenhuma campanha cadastrada.</div>';
+  if(!data || !data.length) {
+    box.innerHTML =
+      '<div class="empty">Nenhuma campanha cadastrada.</div>';
     return;
   }
 
@@ -930,7 +676,6 @@ async function loadAdminCampaigns() {
 }
 
 $("adminCampaigns").addEventListener("click", async e => {
-
   const button = e.target.closest("[data-campaign-action]");
 
   if(!button || !isAdmin) return;
@@ -957,11 +702,10 @@ $("adminCampaigns").addEventListener("click", async e => {
 });
 
 // ======================================
-// DOAÇÕES
+// CONTROLE DE DOAÇÕES
 // ======================================
 
 async function loadAdminDonations() {
-
   const box = $("adminDonations");
 
   const {data, error} = await db
@@ -974,8 +718,9 @@ async function loadAdminDonations() {
     return;
   }
 
-  if(!data.length) {
-    box.innerHTML = '<div class="empty">Nenhuma doação registrada.</div>';
+  if(!data || !data.length) {
+    box.innerHTML =
+      '<div class="empty">Nenhuma doação registrada.</div>';
     return;
   }
 
@@ -1012,7 +757,6 @@ async function loadAdminDonations() {
 }
 
 $("adminDonations").addEventListener("click", async e => {
-
   const button = e.target.closest("[data-donation-confirm]");
 
   if(!button || !isAdmin) return;
@@ -1047,7 +791,6 @@ $("adminDonations").addEventListener("click", async e => {
 // ======================================
 
 async function loadFinance() {
-
   const {data, error} = await db
     .from("resumo_financeiro")
     .select("*")
@@ -1055,6 +798,8 @@ async function loadFinance() {
 
   if(error) {
     console.error("Resumo financeiro:", error);
+    $("publicFinance").textContent =
+      "Os indicadores financeiros estão sendo configurados.";
     return;
   }
 
@@ -1069,6 +814,12 @@ async function loadFinance() {
 
   $("statPendingTotal").textContent =
     money(data.total_pendente);
+
+  $("publicFinance").innerHTML = `
+    <strong>Indicadores financeiros</strong><br>
+    Doações confirmadas: ${Number(data.doacoes_confirmadas || 0)}<br>
+    Total arrecadado: ${money(data.total_arrecadado)}
+  `;
 }
 
 // ======================================
@@ -1076,12 +827,12 @@ async function loadFinance() {
 // ======================================
 
 $("movementForm").addEventListener("submit", async e => {
-
   e.preventDefault();
 
   if(!isAdmin) return;
 
-  const button = e.submitter;
+  const button = $("movementButton");
+
   button.disabled = true;
   button.textContent = "Registrando...";
 
@@ -1112,7 +863,6 @@ $("movementForm").addEventListener("submit", async e => {
 });
 
 async function loadAdminMovements() {
-
   const box = $("adminMovements");
 
   const {data, error} = await db
@@ -1125,8 +875,9 @@ async function loadAdminMovements() {
     return;
   }
 
-  if(!data.length) {
-    box.innerHTML = '<div class="empty">Nenhuma movimentação registrada.</div>';
+  if(!data || !data.length) {
+    box.innerHTML =
+      '<div class="empty">Nenhuma movimentação registrada.</div>';
     return;
   }
 
@@ -1167,28 +918,27 @@ async function loadAdminMovements() {
 // ======================================
 
 async function initialize() {
+  await loadCampaigns();
+  await loadFinance();
 
   const {data, error} = await db.auth.getSession();
 
   if(error) {
-    console.error(error);
+    console.error("Erro ao verificar sessão:", error);
+    showLogin();
     return;
   }
 
   currentUser = data.session?.user || null;
 
   await updateInterface();
-  await loadCampaigns();
 
   db.auth.onAuthStateChange((event, session) => {
-
     currentUser = session?.user || null;
 
     setTimeout(async () => {
       await updateInterface();
-      await loadCampaigns();
     }, 0);
-
   });
 }
 
