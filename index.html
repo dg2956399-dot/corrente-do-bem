@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,91 +9,56 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--green:#087f5b;--dark:#123d30;--light:#eaf7ef;--bg:#f7faf8;--text:#26352e;--muted:#718078;--white:#fff;--red:#c0392b}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
 header{background:white;padding:17px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;box-shadow:0 2px 12px #0000000c;position:sticky;top:0;z-index:10}
-.logo{font-size:23px;font-weight:bold;color:var(--green)}
-nav{display:flex;gap:19px;flex-wrap:wrap;align-items:center}
-nav a{text-decoration:none;color:#33443b;font-weight:bold;font-size:14px}
-nav a:hover{color:var(--green)}
-.container{max-width:1150px;margin:auto}
-.hero{padding:85px 7%;text-align:center;background:linear-gradient(135deg,#e3f8ed,#f5fff8)}
+.logo{font-size:23px;font-weight:bold;color:var(--green)}nav{display:flex;gap:19px;flex-wrap:wrap;align-items:center}
+nav a{text-decoration:none;color:#33443b;font-weight:bold;font-size:14px}nav a:hover{color:var(--green)}
+.container{max-width:1150px;margin:auto}.hero{padding:75px 7%;text-align:center;background:linear-gradient(135deg,#e3f8ed,#f5fff8)}
 .hero h1{font-size:clamp(32px,6vw,52px);color:var(--green);margin-bottom:20px}
 .hero p{max-width:700px;margin:auto;line-height:1.8;font-size:18px;color:#506359}
 .btn{display:inline-block;border:0;background:var(--green);color:white;padding:13px 22px;border-radius:9px;font-weight:bold;text-decoration:none;margin-top:18px}
-.btn:hover{background:#056447}
-.btn:disabled{opacity:.6;cursor:not-allowed}
-.btn.danger{background:var(--red)}
-.btn.small{padding:9px 13px;font-size:13px;margin:4px}
-section{padding:60px 7%}
-.section-title{text-align:center;font-size:32px;color:var(--green);margin-bottom:14px}
+.btn:hover{background:#056447}.btn:disabled{opacity:.6;cursor:not-allowed}.btn.danger{background:var(--red)}.btn.small{padding:9px 13px;font-size:13px;margin:4px}
+section{padding:60px 7%}.section-title{text-align:center;font-size:32px;color:var(--green);margin-bottom:14px}
 .subtitle{text-align:center;color:var(--muted);margin-bottom:35px;line-height:1.6}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:22px}
 .card{background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #00000009;border:1px solid #e9f0eb}
-.card h3{color:var(--green);margin-bottom:12px}
-.card p{line-height:1.7;color:#647269}
+.card h3{color:var(--green);margin-bottom:12px}.card p{line-height:1.7;color:#647269}
 .campaign-image{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:15px;background:#eaf7ef}
-.progress{background:#e4eee7;height:9px;border-radius:20px;margin:15px 0;overflow:hidden}
-.progress div{background:var(--green);height:100%}
-.money{color:var(--green);font-weight:bold}
-.status{display:inline-block;padding:6px 10px;border-radius:20px;font-size:12px;background:#eaf7ef;color:var(--green);font-weight:bold}
-.about{background:var(--light);text-align:center}
-.about p{max-width:780px;margin:auto;line-height:1.9;color:#53655b;font-size:17px}
-.transparency{background:white}
-.notice{max-width:850px;margin:auto;background:#f0faf4;border-left:5px solid var(--green);padding:25px;border-radius:8px;line-height:1.8;color:#46584d}
-.panel{background:#edf5ef;padding:55px 6%;min-height:300px}
-.panel-box{max-width:1100px;margin:auto;background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #00000009}
-.panel h2{color:var(--green);margin-bottom:20px}
-.login-box{max-width:420px;margin:30px auto;background:white;padding:28px;border-radius:15px;box-shadow:0 5px 25px #0000000b}
-.field{margin-bottom:15px}
-.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:7px}
+.progress{background:#e4eee7;height:9px;border-radius:20px;margin:15px 0;overflow:hidden}.progress div{background:var(--green);height:100%}
+.money{color:var(--green);font-weight:bold}.status{display:inline-block;padding:6px 10px;border-radius:20px;font-size:12px;background:#eaf7ef;color:var(--green);font-weight:bold}
+.about{background:var(--light);text-align:center}.about p{max-width:780px;margin:auto;line-height:1.9;color:#53655b;font-size:17px}
+.transparency{background:white}.notice{max-width:850px;margin:auto;background:#f0faf4;border-left:5px solid var(--green);padding:25px;border-radius:8px;line-height:1.8;color:#46584d}
+.panel{background:#edf5ef;padding:55px 6%;min-height:300px}.panel-box{max-width:1100px;margin:auto;background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #00000009}
+.panel h2{color:var(--green);margin-bottom:20px}.login-box{max-width:420px;margin:30px auto;background:white;padding:28px;border-radius:15px;box-shadow:0 5px 25px #0000000b}
+.field{margin-bottom:15px}.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:7px}
 .field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid #dce7df;border-radius:8px;background:white;outline:none}
-.field input:focus,.field textarea:focus{border-color:var(--green)}
-.field textarea{min-height:100px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--green)}.field textarea{min-height:100px;resize:vertical}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:15px;margin-bottom:25px}
-.stat{background:#eff9f2;padding:20px;border-radius:12px}
-.stat span{display:block;color:#65766b;font-size:13px}
+.stat{background:#eff9f2;padding:20px;border-radius:12px}.stat span{display:block;color:#65766b;font-size:13px}
 .stat strong{display:block;font-size:23px;color:var(--green);margin-top:8px}
-.table-wrap{overflow-x:auto;margin-top:20px}
-table{width:100%;border-collapse:collapse;min-width:600px}
-th,td{text-align:left;padding:13px;border-bottom:1px solid #edf0ed;font-size:13px}
-th{background:#f0f7f2;color:var(--green)}
-.hidden{display:none!important}
-.message{padding:13px;border-radius:8px;margin:12px 0;font-size:14px;line-height:1.5;background:#eaf7ef;color:var(--green)}
-.message.error{background:#fff0ef;color:var(--red)}
-.empty{text-align:center;padding:35px;color:var(--muted);background:white;border-radius:12px}
-footer{background:var(--dark);color:white;text-align:center;padding:35px 15px;line-height:2}
-footer strong{color:#9ce7bd}
+.table-wrap{overflow-x:auto;margin-top:20px}table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{text-align:left;padding:13px;border-bottom:1px solid #edf0ed;font-size:13px}th{background:#f0f7f2;color:var(--green)}
+.hidden{display:none!important}.message{padding:13px;border-radius:8px;margin:12px 0;font-size:14px;line-height:1.5;background:#eaf7ef;color:var(--green)}
+.message.error{background:#fff0ef;color:var(--red)}.empty{text-align:center;padding:35px;color:var(--muted);background:white;border-radius:12px}
+footer{background:var(--dark);color:white;text-align:center;padding:35px 15px;line-height:2}footer strong{color:#9ce7bd}
 .modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:1000}
-.modal.active{display:flex}
-.modal-box{background:white;width:100%;max-width:440px;padding:25px;border-radius:16px;max-height:90vh;overflow:auto}
-.modal-box h2{color:var(--green);margin-bottom:15px}
-.modal-close{float:right;border:0;background:#eee;border-radius:8px;padding:7px 12px}
+.modal.active{display:flex}.modal-box{background:white;width:100%;max-width:460px;padding:25px;border-radius:16px;max-height:92vh;overflow:auto}
+.modal-box h2{color:var(--green);margin-bottom:15px}.modal-close{float:right;border:0;background:#eee;border-radius:8px;padding:7px 12px}
 .pix-code{width:100%;min-height:90px;padding:12px;border:1px solid #dce7df;border-radius:8px;overflow-wrap:anywhere;background:#f7faf8;margin:12px 0;font-size:13px}
-.pix-qr{display:block;max-width:220px;width:100%;margin:15px auto}
-@media(max-width:650px){
-header{justify-content:center}
-nav{justify-content:center;gap:12px}
-.hero{padding:65px 6%}
-section{padding:45px 6%}
-.panel{padding:35px 5%}
-.panel-box{padding:18px}
-}
+.pix-qr{display:block;max-width:220px;width:100%;margin:15px auto}.amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 15px}
+.amounts button{border:1px solid #cfe2d5;background:#f5fbf7;color:var(--green);padding:10px 4px;border-radius:8px;font-weight:bold}
+.amounts button.selected{background:var(--green);color:white}
+@media(max-width:650px){header{justify-content:center}nav{justify-content:center;gap:12px}.hero{padding:60px 6%}section{padding:45px 6%}.panel{padding:35px 5%}.panel-box{padding:18px}.amounts{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo">❤️ Corrente do Bem</div>
   <nav>
-    <a href="#inicio">Início</a>
-    <a href="#campanhas">Campanhas</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#transparencia">Transparência</a>
-    <a href="#administracao">Administração</a>
+    <a href="#inicio">Início</a><a href="#campanhas">Campanhas</a><a href="#sobre">Sobre</a>
+    <a href="#transparencia">Transparência</a><a href="#administracao">Administração</a>
   </nav>
 </header>
 
@@ -102,18 +66,15 @@ section{padding:45px 6%}
 <section class="hero" id="inicio">
   <h1>Juntos podemos transformar vidas!</h1>
   <p>Uma corrente de solidariedade que conecta pessoas que precisam de ajuda a pessoas dispostas a fazer o bem. Cada gesto de carinho pode mudar uma história.</p>
-  <a class="btn" href="#campanhas">Conheça nossas campanhas</a>
+  <button class="btn" type="button" id="heroDonateButton">❤️ Fazer uma doação</button>
+  <a class="btn" href="#campanhas" style="background:#fff;color:var(--green);margin-left:8px">Conheça nossas campanhas</a>
 </section>
 
-<section id="campanhas">
-  <div class="container">
-    <h2 class="section-title">Campanhas solidárias</h2>
-    <p class="subtitle">Conheça as iniciativas que fazem parte da nossa corrente.</p>
-    <div id="campaignList" class="cards">
-      <div class="empty">Carregando campanhas...</div>
-    </div>
-  </div>
-</section>
+<section id="campanhas"><div class="container">
+  <h2 class="section-title">Campanhas solidárias</h2>
+  <p class="subtitle">Conheça as iniciativas que fazem parte da nossa corrente.</p>
+  <div id="campaignList" class="cards"><div class="empty">Carregando campanhas...</div></div>
+</div></section>
 
 <section class="about" id="sobre">
   <h2 class="section-title">Sobre a Corrente do Bem</h2>
@@ -121,135 +82,68 @@ section{padding:45px 6%}
 </section>
 
 <section class="transparency" id="transparencia">
-  <h2 class="section-title">Transparência e confiança</h2>
-  <p class="subtitle">A confiança é a base da nossa corrente.</p>
-  <div class="notice">
-    <strong>Nosso compromisso:</strong><br>
+  <h2 class="section-title">Transparência e confiança</h2><p class="subtitle">A confiança é a base da nossa corrente.</p>
+  <div class="notice"><strong>Nosso compromisso:</strong><br>
     Verificar as campanhas, acompanhar as arrecadações e apresentar informações claras sobre a utilização dos recursos. Cada campanha deverá ter informações e comprovantes para acompanhamento público.
-    <br><br>
-    <strong>Prestação de contas:</strong>
-    Os dados financeiros públicos serão apresentados sem expor informações pessoais dos doadores.
+    <br><br><strong>Prestação de contas:</strong> Os dados financeiros públicos serão apresentados sem expor informações pessoais dos doadores.
     <div id="publicFinance" style="margin-top:15px">Carregando indicadores financeiros...</div>
   </div>
 </section>
 
-<section class="panel" id="administracao">
-  <div class="panel-box">
-    <div id="loginArea">
-      <h2>🔐 Administração</h2>
-      <p style="color:#718078;margin-bottom:20px">Área exclusiva da equipe responsável pela Corrente do Bem.</p>
-
-      <form id="loginForm" class="login-box">
-        <div class="field">
-          <label>E-mail administrativo</label>
-          <input id="loginEmail" type="email" autocomplete="username" required placeholder="E-mail do administrador">
-        </div>
-        <div class="field">
-          <label>Senha</label>
-          <input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Sua senha">
-        </div>
-        <button class="btn" type="submit" id="loginButton" style="width:100%">Entrar na administração</button>
-        <div id="loginMessage" aria-live="polite"></div>
-      </form>
-    </div>
-
-    <div id="adminArea" class="hidden">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <h2>🛡️ Painel administrativo</h2>
-        <button class="btn danger" id="logoutButton">Sair</button>
-      </div>
-
-      <p id="adminEmail" style="color:#718078;margin-bottom:20px"></p>
-      <p style="color:#718078;margin-bottom:20px">Gerenciamento de campanhas, doações e movimentações financeiras.</p>
-
-      <div class="stats">
-        <div class="stat">
-          <span>Doações confirmadas</span>
-          <strong id="statConfirmed">—</strong>
-        </div>
-        <div class="stat">
-          <span>Total arrecadado</span>
-          <strong id="statTotal">—</strong>
-        </div>
-        <div class="stat">
-          <span>Doações pendentes</span>
-          <strong id="statPending">—</strong>
-        </div>
-        <div class="stat">
-          <span>Total pendente</span>
-          <strong id="statPendingTotal">—</strong>
-        </div>
-      </div>
-
-      <h2>📋 Gerenciar campanhas</h2>
-      <div id="adminCampaigns" class="table-wrap">Carregando...</div>
-
-      <h2 style="margin-top:35px">💚 Controle de doações</h2>
-      <p style="color:#718078;font-size:13px;margin-bottom:15px">Confirme somente doações cujo recebimento foi verificado.</p>
-      <div id="adminDonations" class="table-wrap">Carregando...</div>
-
-      <h2 style="margin-top:35px">💰 Registrar movimentação</h2>
-      <form id="movementForm">
-        <div class="field">
-          <label>Tipo</label>
-          <select id="movementType" required>
-            <option value="entrada">Entrada</option>
-            <option value="saida">Saída</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Valor (R$)</label>
-          <input id="movementValue" type="number" min="0.01" step="0.01" required>
-        </div>
-        <div class="field">
-          <label>Descrição</label>
-          <input id="movementDescription" maxlength="300" required>
-        </div>
-        <div class="field">
-          <label>Comprovante (URL opcional)</label>
-          <input id="movementProof" type="url">
-        </div>
-        <button class="btn" type="submit" id="movementButton">Registrar movimentação</button>
-        <div id="movementMessage" aria-live="polite"></div>
-      </form>
-
-      <h2 style="margin-top:35px">📑 Histórico financeiro</h2>
-      <div id="adminMovements" class="table-wrap">Carregando...</div>
-    </div>
+<section class="panel" id="administracao"><div class="panel-box">
+  <div id="loginArea">
+    <h2>🔐 Administração</h2><p style="color:#718078;margin-bottom:20px">Área exclusiva da equipe responsável pela Corrente do Bem.</p>
+    <form id="loginForm" class="login-box">
+      <div class="field"><label for="loginEmail">E-mail administrativo</label><input id="loginEmail" type="email" autocomplete="username" required placeholder="E-mail do administrador"></div>
+      <div class="field"><label for="loginPassword">Senha</label><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Sua senha"></div>
+      <button class="btn" type="submit" id="loginButton" style="width:100%">Entrar na administração</button><div id="loginMessage" aria-live="polite"></div>
+    </form>
   </div>
-</section>
+  <div id="adminArea" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <h2>🛡️ Painel administrativo</h2><button class="btn danger" id="logoutButton">Sair</button>
+    </div>
+    <p id="adminEmail" style="color:#718078;margin-bottom:20px"></p>
+    <div class="stats">
+      <div class="stat"><span>Doações confirmadas</span><strong id="statConfirmed">—</strong></div>
+      <div class="stat"><span>Total arrecadado</span><strong id="statTotal">—</strong></div>
+      <div class="stat"><span>Doações pendentes</span><strong id="statPending">—</strong></div>
+      <div class="stat"><span>Total pendente</span><strong id="statPendingTotal">—</strong></div>
+    </div>
+    <h2>📋 Gerenciar campanhas</h2><div id="adminCampaigns" class="table-wrap">Carregando...</div>
+    <h2 style="margin-top:35px">💚 Controle de doações</h2>
+    <p style="color:#718078;font-size:13px;margin-bottom:15px">O status é atualizado pelo retorno confirmado do Mercado Pago. Não confirme pagamentos manualmente por esta tela.</p>
+    <div id="adminDonations" class="table-wrap">Carregando...</div>
+    <h2 style="margin-top:35px">💰 Registrar movimentação</h2>
+    <form id="movementForm">
+      <div class="field"><label for="movementType">Tipo</label><select id="movementType" required><option value="entrada">Entrada</option><option value="saida">Saída</option></select></div>
+      <div class="field"><label for="movementValue">Valor (R$)</label><input id="movementValue" type="number" min="0.01" step="0.01" required></div>
+      <div class="field"><label for="movementDescription">Descrição</label><input id="movementDescription" maxlength="300" required></div>
+      <div class="field"><label for="movementProof">Comprovante (URL opcional)</label><input id="movementProof" type="url"></div>
+      <button class="btn" type="submit" id="movementButton">Registrar movimentação</button><div id="movementMessage" aria-live="polite"></div>
+    </form>
+    <h2 style="margin-top:35px">📑 Histórico financeiro</h2><div id="adminMovements" class="table-wrap">Carregando...</div>
+  </div>
+</div></section>
 </main>
 
-<!-- Janela de doação Pix -->
 <div class="modal" id="donationModal" role="dialog" aria-modal="true" aria-labelledby="donationTitle">
   <div class="modal-box">
     <button class="modal-close" type="button" id="closeDonationButton">Fechar</button>
-    <h2 id="donationTitle">💚 Faça sua doação</h2>
-    <p id="donationCampaignName" style="margin-bottom:18px"></p>
-
+    <h2 id="donationTitle">💚 Apoie a Corrente do Bem</h2>
+    <p style="margin-bottom:15px;color:#647269">Sua doação é livre e vai para o caixa central da Corrente do Bem. Não é necessário escolher uma campanha.</p>
     <form id="donationForm">
-      <input type="hidden" id="donationCampaignId">
-
-      <div class="field">
-        <label for="donorName">Seu nome</label>
-        <input id="donorName" maxlength="100" autocomplete="name" required>
+      <div class="field"><label for="donorName">Seu nome</label><input id="donorName" maxlength="100" autocomplete="name" required></div>
+      <div class="field"><label for="donorEmail">Seu e-mail</label><input id="donorEmail" type="email" maxlength="150" autocomplete="email" required></div>
+      <label style="font-weight:bold;font-size:14px">Escolha um valor</label>
+      <div class="amounts">
+        <button type="button" data-amount="10">R$ 10</button><button type="button" data-amount="20">R$ 20</button>
+        <button type="button" data-amount="50">R$ 50</button><button type="button" data-amount="100">R$ 100</button>
       </div>
-
-      <div class="field">
-        <label for="donorEmail">Seu e-mail</label>
-        <input id="donorEmail" type="email" maxlength="150" autocomplete="email" required>
-      </div>
-
-      <div class="field">
-        <label for="donationAmount">Valor da doação (R$)</label>
-        <input id="donationAmount" type="number" min="1" max="10000" step="0.01" required placeholder="Ex.: 20,00">
-      </div>
-
+      <div class="field"><label for="donationAmount">Ou informe outro valor (R$)</label><input id="donationAmount" type="number" min="1" max="10000" step="0.01" required placeholder="Ex.: 25,00"></div>
       <button class="btn" id="donationButton" type="submit" style="width:100%">Gerar meu Pix</button>
     </form>
-
     <div id="donationMessage" aria-live="polite"></div>
-
     <div id="pixArea" class="hidden">
       <h3 style="text-align:center;color:var(--green)">Seu Pix foi gerado!</h3>
       <img id="pixQr" class="pix-qr hidden" alt="QR Code Pix">
@@ -257,680 +151,155 @@ section{padding:45px 6%}
       <div id="pixCopyCode" class="pix-code"></div>
       <button class="btn" type="button" id="copyPixButton" style="width:100%">Copiar código Pix</button>
       <p id="pixTicket" style="text-align:center;margin-top:12px"></p>
-      <p style="font-size:13px;color:#718078;margin-top:15px">A doação aparecerá como confirmada após a confirmação do pagamento pelo Mercado Pago.</p>
+      <p style="font-size:13px;color:#718078;margin-top:15px">A doação será contabilizada somente depois que o Mercado Pago confirmar o pagamento.</p>
     </div>
   </div>
 </div>
 
-<footer>
-  <strong>Corrente do Bem ❤️</strong><br>
-  Juntos fazemos a diferença.<br>
-  © 2026 Corrente do Bem. Todos os direitos reservados.
-</footer>
+<footer><strong>Corrente do Bem ❤️</strong><br>Juntos fazemos a diferença.<br>© 2026 Corrente do Bem. Todos os direitos reservados.</footer>
 
 <script>
-const SUPABASE_URL = "https://vfaqylbgnxzgvqgkvnct.supabase.co";
-const SUPABASE_KEY = "sb_publishable_JhjIxw4Omb7MhpmMs8pEDQ_EaOEnt0H";
-const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SUPABASE_URL="https://vfaqylbgnxzgvqgkvnct.supabase.co";
+const SUPABASE_KEY="sb_publishable_JhjIxw4Omb7MhpmMs8pEDQ_EaOEnt0H";
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+let currentUser=null,isAdmin=false;
 
-const $ = id => document.getElementById(id);
+function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+function money(value){return Number(value||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});}
+function message(id,text,error=false){const el=$(id);el.textContent=text;el.className="message"+(error?" error":"");}
+function showError(id,error){console.error(error);message(id,error?.message||"Ocorreu um erro.",true);}
 
-let currentUser = null;
-let isAdmin = false;
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
-  })[char]);
-}
-
-function money(value) {
-  return Number(value || 0).toLocaleString("pt-BR", {
-    style:"currency",
-    currency:"BRL"
-  });
-}
-
-function message(id,text,error=false) {
-  const el=$(id);
-  el.textContent=text;
-  el.className="message"+(error?" error":"");
-}
-
-function showError(id,error) {
-  console.error(error);
-  message(id,error?.message||"Ocorreu um erro.",true);
-}
-
-// CAMPANHAS PÚBLICAS
-async function loadCampaigns() {
-  const container=$("campaignList");
-
-  const {data,error}=await db
-    .from("campanhas")
-    .select("*")
-    .eq("status","aprovada")
-    .order("criado_em",{ascending:false});
-
-  if(error) {
-    console.error(error);
-    container.innerHTML='<div class="empty">Não foi possível carregar as campanhas.</div>';
-    return;
-  }
-
-  if(!data?.length) {
-    container.innerHTML='<div class="empty">Ainda não existem campanhas aprovadas. Em breve teremos novidades! 💚</div>';
-    return;
-  }
-
-  container.innerHTML=data.map(c=>{
-    const goal=Number(c.meta||0);
-    const raised=Number(c.valor_arrecadado||0);
-    const percent=goal>0?Math.min(100,Math.max(0,(raised/goal)*100)):0;
-
-    const image=c.imagem_url
-      ? `<img class="campaign-image" src="${escapeHTML(c.imagem_url)}" alt="Imagem da campanha" loading="lazy" onerror="this.style.display='none'">`
-      : "";
-
-    return `<article class="card">
-      ${image}
-      <span class="status">Campanha aprovada</span>
-      <h3 style="margin-top:14px">${escapeHTML(c.titulo)}</h3>
-      <p>${escapeHTML(c.descricao)}</p>
-      <p style="margin-top:12px"><strong>Categoria:</strong> ${escapeHTML(c.categoria)}</p>
-      <div class="progress"><div style="width:${percent}%"></div></div>
-      <p class="money">${money(raised)} arrecadados</p>
-      <p>Meta: ${money(goal)}</p>
-      <p style="font-size:12px;margin-top:8px">${percent.toFixed(0)}% da meta</p>
-      <button class="btn" type="button" data-donate-id="${escapeHTML(c.id)}" data-donate-title="${escapeHTML(c.titulo)}">❤️ Doar para esta campanha</button>
-    </article>`;
+async function loadCampaigns(){
+  const box=$("campaignList");
+  const {data,error}=await db.from("campanhas").select("*").eq("status","aprovada").order("criado_em",{ascending:false});
+  if(error){console.error(error);box.innerHTML='<div class="empty">Não foi possível carregar as campanhas.</div>';return;}
+  if(!data?.length){box.innerHTML='<div class="empty">Ainda não existem campanhas aprovadas. Você já pode apoiar a Corrente do Bem com uma doação livre! 💚<br><button class="btn" type="button" data-open-general-donation>Fazer uma doação</button></div>';return;}
+  box.innerHTML=data.map(c=>{
+    const goal=Number(c.meta||0),raised=Number(c.valor_arrecadado||0),percent=goal>0?Math.min(100,Math.max(0,raised/goal*100)):0;
+    const image=c.imagem_url?`<img class="campaign-image" src="${escapeHTML(c.imagem_url)}" alt="Imagem da campanha" loading="lazy" onerror="this.style.display='none'">`:"";
+    return `<article class="card">${image}<span class="status">Campanha aprovada</span><h3 style="margin-top:14px">${escapeHTML(c.titulo)}</h3><p>${escapeHTML(c.descricao)}</p><p style="margin-top:12px"><strong>Categoria:</strong> ${escapeHTML(c.categoria)}</p><div class="progress"><div style="width:${percent}%"></div></div><p class="money">${money(raised)} arrecadados</p><p>Meta: ${money(goal)}</p><p style="font-size:12px;margin-top:8px">${percent.toFixed(0)}% da meta</p><button class="btn" type="button" data-donate-id="${escapeHTML(c.id)}" data-donate-title="${escapeHTML(c.titulo)}">❤️ Doar para esta campanha</button></article>`;
   }).join("");
 }
 
-// MODAL E PIX
-function openDonation(id,title) {
-  $("donationCampaignId").value=id;
-  $("donationCampaignName").textContent="Campanha: "+title;
-  $("donationForm").classList.remove("hidden");
-  $("pixArea").classList.add("hidden");
-  $("donationMessage").textContent="";
-  $("donationMessage").className="";
-  $("donationForm").reset();
-  $("donationCampaignId").value=id;
+function openDonation(campaignId=null,campaignTitle="Doação livre para a Corrente do Bem"){
+  $("donationForm").reset();$("pixArea").classList.add("hidden");$("donationForm").classList.remove("hidden");
+  $("donationMessage").textContent="";$("donationMessage").className="";
+  $("donationTitle").textContent=campaignId?"💚 Faça sua doação":"💚 Apoie a Corrente do Bem";
+  $("donationModal").dataset.campaignId=campaignId||"";
   $("donationModal").classList.add("active");
 }
-
-function closeDonation() {
-  $("donationModal").classList.remove("active");
-}
-
-$("campaignList").addEventListener("click",event=>{
-  const button=event.target.closest("[data-donate-id]");
-  if(button) {
-    openDonation(button.dataset.donateId,button.dataset.donateTitle);
-  }
-});
-
+function closeDonation(){$("donationModal").classList.remove("active");}
+$("heroDonateButton").addEventListener("click",()=>openDonation());
+$("campaignList").addEventListener("click",e=>{const general=e.target.closest("[data-open-general-donation]");if(general){openDonation();return;}const b=e.target.closest("[data-donate-id]");if(b)openDonation(b.dataset.donateId,b.dataset.donateTitle);});
 $("closeDonationButton").addEventListener("click",closeDonation);
+$("donationModal").addEventListener("click",e=>{if(e.target===$("donationModal"))closeDonation();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDonation();});
+document.querySelectorAll("[data-amount]").forEach(b=>b.addEventListener("click",()=>{
+  $("donationAmount").value=b.dataset.amount;
+  document.querySelectorAll("[data-amount]").forEach(x=>x.classList.toggle("selected",x===b));
+}));
+$("donationAmount").addEventListener("input",()=>document.querySelectorAll("[data-amount]").forEach(b=>b.classList.toggle("selected",Number(b.dataset.amount)===Number($("donationAmount").value))));
 
-$("donationModal").addEventListener("click",event=>{
-  if(event.target===$("donationModal")) closeDonation();
-});
-
-document.addEventListener("keydown",event=>{
-  if(event.key==="Escape") closeDonation();
-});
-
-function findPixPayload(data) {
-  const candidates=[
-    data?.pix,
-    data?.pagamento,
-    data?.payment,
-    data?.order,
-    data?.doacao?.pix,
-    data?.doacao?.pagamento,
-    data?.transactions?.payments?.[0],
-    data?.order?.transactions?.payments?.[0],
-    data?.pagamento?.transactions?.payments?.[0],
-    data
-  ].filter(Boolean);
-
-  let code="";
-  let base64="";
-  let ticket="";
-
-  for(const item of candidates) {
-    const method=
-      item?.payment_method||
-      item?.point_of_interaction?.transaction_data||
-      item?.transaction_data||
-      {};
-
-    code=code||
-      item?.qr_code||
-      item?.qr_code_text||
-      item?.copia_e_cola||
-      item?.qrCode||
-      method?.qr_code||
-      method?.qr_code_text||
-      method?.qrCode||
-      "";
-
-    base64=base64||
-      item?.qr_code_base64||
-      item?.qrCodeBase64||
-      method?.qr_code_base64||
-      method?.qrCodeBase64||
-      "";
-
-    ticket=ticket||
-      item?.ticket_url||
-      item?.external_resource_url||
-      method?.ticket_url||
-      "";
-  }
-
-  return {
-    code:String(code||""),
-    base64:String(base64||""),
-    ticket:String(ticket||"")
-  };
+function findPix(data){
+  const p=data?.pix||data?.payment||data?.pagamento||data;
+  const tx=p?.point_of_interaction?.transaction_data||p?.transaction_data||p;
+  return {code:tx?.qr_code||tx?.qr_code_text||tx?.copia_e_cola||"",base64:tx?.qr_code_base64||"",ticket:tx?.ticket_url||tx?.external_resource_url||""};
 }
-
-$("donationForm").addEventListener("submit",async event=>{
-  event.preventDefault();
-
-  const button=$("donationButton");
-  const name=$("donorName").value.trim();
-  const email=$("donorEmail").value.trim();
-  const amount=Number($("donationAmount").value);
-  const campaignId=$("donationCampaignId").value;
-
-  if(name.length<2) {
-    message("donationMessage","Informe seu nome.",true);
-    return;
-  }
-
-  if(!email||! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    message("donationMessage","Informe um e-mail válido.",true);
-    return;
-  }
-
-  if(!Number.isFinite(amount)||amount<1||amount>10000) {
-    message("donationMessage","O valor deve ser entre R$ 1 e R$ 10.000.",true);
-    return;
-  }
-
-  button.disabled=true;
-  button.textContent="Gerando Pix...";
-  $("pixArea").classList.add("hidden");
-
-  try {
-    const {data,error}=await db.functions.invoke("registrar-doacao-",{
-      body:{
-        campanha_id:campaignId,
-        nome_doador:name,
-        email:email,
-        valor:amount
-      }
-    });
-
-    if(error) throw error;
-    if(data?.error||data?.erro) {
-      throw new Error(data.error||data.erro);
-    }
-
-    const pix=findPixPayload(data);
-
-    if(!pix.code&&!pix.base64) {
-      console.error("Resposta da função registrar-doacao-:",data);
-      throw new Error("A função respondeu, mas não retornou o QR Code ou o código Pix. Não tente pagar novamente antes de conferir o pagamento no Mercado Pago.");
-    }
-
+$("donationForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const button=$("donationButton"),name=$("donorName").value.trim(),email=$("donorEmail").value.trim(),amount=Number($("donationAmount").value);
+  const campaignId=$("donationModal").dataset.campaignId||null;
+  if(name.length<2){message("donationMessage","Informe seu nome.",true);return;}
+  if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)){message("donationMessage","Informe um e-mail válido.",true);return;}
+  if(!Number.isFinite(amount)||amount<1||amount>10000){message("donationMessage","O valor deve ser entre R$ 1 e R$ 10.000.",true);return;}
+  button.disabled=true;button.textContent="Gerando Pix...";$("pixArea").classList.add("hidden");
+  try{
+    const {data,error}=await db.functions.invoke("registrar-doacao",{body:{campanha_id:campaignId,nome_doador:name,email_doador:email,valor:amount}});
+    if(error)throw error;if(data?.error)throw new Error(data.error);
+    const pix=findPix(data);
+    if(!pix.code&&!pix.base64)throw new Error("A cobrança foi criada, mas o Mercado Pago não retornou o QR Code. Confira o painel antes de tentar novamente.");
     $("pixCopyCode").textContent=pix.code||"Use o QR Code para pagar.";
-
     const qr=$("pixQr");
-
-    if(pix.base64) {
-      qr.src=pix.base64.startsWith("data:")
-        ? pix.base64
-        : "data:image/png;base64,"+pix.base64;
-
-      qr.classList.remove("hidden");
-    } else {
-      qr.removeAttribute("src");
-      qr.classList.add("hidden");
-    }
-
+    if(pix.base64){qr.src=pix.base64.startsWith("data:")?pix.base64:"data:image/png;base64,"+pix.base64;qr.classList.remove("hidden");}
+    else{qr.removeAttribute("src");qr.classList.add("hidden");}
     $("pixTicket").replaceChildren();
-
-    if(pix.ticket) {
-      const a=document.createElement("a");
-      a.href=pix.ticket;
-      a.target="_blank";
-      a.rel="noopener noreferrer";
-      a.textContent="Abrir página do pagamento";
-      $("pixTicket").appendChild(a);
-    }
-
-    $("donationForm").classList.add("hidden");
-    $("pixArea").classList.remove("hidden");
-
-  } catch(error) {
-    console.error("Erro ao gerar Pix:",error);
-    message("donationMessage",error?.message||"Não foi possível gerar o Pix. Tente novamente.",true);
-  } finally {
-    button.disabled=false;
-    button.textContent="Gerar meu Pix";
-  }
+    if(pix.ticket){const a=document.createElement("a");a.href=pix.ticket;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Abrir página do pagamento";$("pixTicket").appendChild(a);}
+    $("donationForm").classList.add("hidden");$("pixArea").classList.remove("hidden");
+  }catch(err){console.error(err);message("donationMessage",err?.message||"Não foi possível gerar o Pix. Tente novamente.",true);}
+  finally{button.disabled=false;button.textContent="Gerar meu Pix";}
 });
-
 $("copyPixButton").addEventListener("click",async()=>{
   const code=$("pixCopyCode").textContent.trim();
-
-  if(!code||code==="Use o QR Code para pagar.") {
-    alert("Não há código Pix para copiar.");
-    return;
-  }
-
-  try {
-    await navigator.clipboard.writeText(code);
-    alert("Código Pix copiado!");
-  } catch(error) {
-    const area=document.createElement("textarea");
-    area.value=code;
-    document.body.appendChild(area);
-    area.select();
-
-    const copied=document.execCommand("copy");
-    area.remove();
-
-    alert(copied
-      ?"Código Pix copiado!"
-      :"Não foi possível copiar. Selecione o código manualmente.");
-  }
+  if(!code||code==="Use o QR Code para pagar."){alert("Não há código Pix para copiar.");return;}
+  try{await navigator.clipboard.writeText(code);alert("Código Pix copiado!");}
+  catch{const t=document.createElement("textarea");t.value=code;document.body.appendChild(t);t.select();const ok=document.execCommand("copy");t.remove();alert(ok?"Código Pix copiado!":"Não foi possível copiar. Selecione o código manualmente.");}
 });
 
-// AUTENTICAÇÃO ADMINISTRATIVA
-async function checkAdmin() {
-  if(!currentUser) return false;
-
-  const {data,error}=await db.rpc("is_admin");
-
-  if(error) {
-    console.error("Erro ao verificar administrador:",error);
-    return false;
-  }
-
-  return data===true;
-}
-
-function showLogin() {
-  $("loginArea").classList.remove("hidden");
-  $("adminArea").classList.add("hidden");
-  $("adminEmail").textContent="";
-}
-
-async function updateInterface() {
-  if(!currentUser) {
-    isAdmin=false;
-    showLogin();
-    return;
-  }
-
+async function checkAdmin(){if(!currentUser)return false;const {data,error}=await db.rpc("is_admin");if(error){console.error(error);return false;}return data===true;}
+function showLogin(){$("loginArea").classList.remove("hidden");$("adminArea").classList.add("hidden");$("adminEmail").textContent="";}
+async function updateInterface(){
+  if(!currentUser){isAdmin=false;showLogin();return;}
   isAdmin=await checkAdmin();
-
-  if(!isAdmin) {
-    currentUser=null;
-    await db.auth.signOut();
-    showLogin();
-    message("loginMessage","Esta conta não possui permissão de administrador.",true);
-    return;
-  }
-
-  $("loginArea").classList.add("hidden");
-  $("adminArea").classList.remove("hidden");
-  $("adminEmail").textContent="Administrador conectado: "+currentUser.email;
-
+  if(!isAdmin){currentUser=null;await db.auth.signOut();showLogin();message("loginMessage","Esta conta não possui permissão de administrador.",true);return;}
+  $("loginArea").classList.add("hidden");$("adminArea").classList.remove("hidden");$("adminEmail").textContent="Administrador conectado: "+currentUser.email;
   await loadAdminData();
 }
-
 $("loginForm").addEventListener("submit",async e=>{
-  e.preventDefault();
-
-  const button=$("loginButton");
-  button.disabled=true;
-  button.textContent="Verificando acesso...";
-
-  const {data,error}=await db.auth.signInWithPassword({
-    email:$("loginEmail").value.trim(),
-    password:$("loginPassword").value
-  });
-
-  button.disabled=false;
-  button.textContent="Entrar na administração";
-
-  if(error) {
-    showError("loginMessage",error);
-    return;
-  }
-
-  currentUser=data.user;
-  await updateInterface();
-
-  if(isAdmin) {
-    message("loginMessage","Acesso administrativo autorizado!");
-  }
+  e.preventDefault();const b=$("loginButton");b.disabled=true;b.textContent="Verificando acesso...";
+  const {data,error}=await db.auth.signInWithPassword({email:$("loginEmail").value.trim(),password:$("loginPassword").value});
+  b.disabled=false;b.textContent="Entrar na administração";
+  if(error){showError("loginMessage",error);return;}currentUser=data.user;await updateInterface();if(isAdmin)message("loginMessage","Acesso administrativo autorizado!");
 });
-
 $("logoutButton").addEventListener("click",async()=>{
-  const {error}=await db.auth.signOut();
-
-  if(error) {
-    alert(error.message);
-    return;
-  }
-
-  currentUser=null;
-  isAdmin=false;
-  showLogin();
-  message("loginMessage","Você saiu da administração.");
+  const {error}=await db.auth.signOut();if(error){alert(error.message);return;}
+  currentUser=null;isAdmin=false;showLogin();message("loginMessage","Você saiu da administração.");
 });
+async function loadAdminData(){if(!isAdmin)return;await Promise.all([loadAdminCampaigns(),loadAdminDonations(),loadAdminMovements(),loadFinance()]);}
 
-// PAINEL ADMINISTRATIVO
-async function loadAdminData() {
-  if(!isAdmin) return;
-
-  await Promise.all([
-    loadAdminCampaigns(),
-    loadAdminDonations(),
-    loadAdminMovements(),
-    loadFinance()
-  ]);
+async function loadAdminCampaigns(){
+  const box=$("adminCampaigns"),{data,error}=await db.from("campanhas").select("*").order("criado_em",{ascending:false});
+  if(error){box.textContent="Erro: "+error.message;return;}if(!data?.length){box.innerHTML='<div class="empty">Nenhuma campanha cadastrada.</div>';return;}
+  box.innerHTML=`<table><thead><tr><th>Campanha</th><th>Meta</th><th>Arrecadado</th><th>Status</th><th>Ações</th></tr></thead><tbody>${data.map(c=>`<tr><td>${escapeHTML(c.titulo)}</td><td>${money(c.meta)}</td><td>${money(c.valor_arrecadado)}</td><td>${escapeHTML(c.status)}</td><td>${c.status!=="aprovada"?`<button class="btn small" data-campaign-action="aprovada" data-id="${escapeHTML(c.id)}">Aprovar</button>`:""}${c.status!=="rejeitada"?`<button class="btn small danger" data-campaign-action="rejeitada" data-id="${escapeHTML(c.id)}">Rejeitar</button>`:""}</td></tr>`).join("")}</tbody></table>`;
 }
-
-async function loadAdminCampaigns() {
-  const box=$("adminCampaigns");
-
-  const {data,error}=await db
-    .from("campanhas")
-    .select("*")
-    .order("criado_em",{ascending:false});
-
-  if(error) {
-    box.textContent="Erro: "+error.message;
-    return;
-  }
-
-  if(!data?.length) {
-    box.innerHTML='<div class="empty">Nenhuma campanha cadastrada.</div>';
-    return;
-  }
-
-  box.innerHTML=`<table>
-    <thead>
-      <tr>
-        <th>Campanha</th>
-        <th>Meta</th>
-        <th>Arrecadado</th>
-        <th>Status</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${data.map(c=>`<tr>
-        <td>${escapeHTML(c.titulo)}</td>
-        <td>${money(c.meta)}</td>
-        <td>${money(c.valor_arrecadado)}</td>
-        <td>${escapeHTML(c.status)}</td>
-        <td>
-          ${c.status!=="aprovada"
-            ?`<button class="btn small" data-campaign-action="aprovada" data-id="${escapeHTML(c.id)}">Aprovar</button>`
-            :""}
-          ${c.status!=="rejeitada"
-            ?`<button class="btn small danger" data-campaign-action="rejeitada" data-id="${escapeHTML(c.id)}">Rejeitar</button>`
-            :""}
-        </td>
-      </tr>`).join("")}
-    </tbody>
-  </table>`;
-}
-
 $("adminCampaigns").addEventListener("click",async e=>{
-  const button=e.target.closest("[data-campaign-action]");
-
-  if(!button||!isAdmin) return;
-
-  if(!confirm("Confirma a alteração do status desta campanha?")) return;
-
-  const {error}=await db
-    .from("campanhas")
-    .update({status:button.dataset.campaignAction})
-    .eq("id",button.dataset.id);
-
-  if(error) {
-    alert(error.message);
-    return;
-  }
-
-  await loadAdminCampaigns();
-  await loadCampaigns();
-  alert("Status atualizado com sucesso!");
+  const b=e.target.closest("[data-campaign-action]");if(!b||!isAdmin)return;if(!confirm("Confirma a alteração do status desta campanha?"))return;
+  const {error}=await db.from("campanhas").update({status:b.dataset.campaignAction}).eq("id",b.dataset.id);
+  if(error){alert(error.message);return;}await loadAdminCampaigns();await loadCampaigns();alert("Status atualizado!");
 });
-
-async function loadAdminDonations() {
-  const box=$("adminDonations");
-
-  const {data,error}=await db
-    .from("doacoes")
-    .select("*")
-    .order("criado_em",{ascending:false});
-
-  if(error) {
-    box.textContent="Erro ao consultar doações: "+error.message;
-    return;
-  }
-
-  if(!data?.length) {
-    box.innerHTML='<div class="empty">Nenhuma doação registrada.</div>';
-    return;
-  }
-
-  box.innerHTML=`<table>
-    <thead>
-      <tr>
-        <th>Doador</th>
-        <th>Valor</th>
-        <th>Status</th>
-        <th>Data</th>
-        <th>Ação</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${data.map(d=>`<tr>
-        <td>${escapeHTML(d.nome_doador||"Não informado")}</td>
-        <td>${money(d.valor)}</td>
-        <td>${escapeHTML(d.status)}</td>
-        <td>${d.criado_em?new Date(d.criado_em).toLocaleDateString("pt-BR"):"—"}</td>
-        <td>
-          ${d.status==="pendente"
-            ?`<button class="btn small" data-donation-confirm="${escapeHTML(d.id)}">Confirmar</button>`
-            :""}
-        </td>
-      </tr>`).join("")}
-    </tbody>
-  </table>`;
+async function loadAdminDonations(){
+  const box=$("adminDonations"),{data,error}=await db.from("doacoes").select("id,campanha_id,nome_doador,valor,status,criado_em,mercado_pago_payment_id").order("criado_em",{ascending:false}).limit(200);
+  if(error){box.textContent="Erro ao consultar doações: "+error.message;return;}if(!data?.length){box.innerHTML='<div class="empty">Nenhuma doação registrada.</div>';return;}
+  box.innerHTML=`<table><thead><tr><th>Doador</th><th>Destino</th><th>Valor</th><th>Status</th><th>Data</th><th>Pagamento</th></tr></thead><tbody>${data.map(d=>`<tr><td>${escapeHTML(d.nome_doador||"Não informado")}</td><td>${d.campanha_id?"Campanha":"Caixa central"}</td><td>${money(d.valor)}</td><td>${escapeHTML(d.status)}</td><td>${d.criado_em?new Date(d.criado_em).toLocaleString("pt-BR"):"—"}</td><td>${escapeHTML(d.mercado_pago_payment_id||"—")}</td></tr>`).join("")}</tbody></table>`;
 }
-
-$("adminDonations").addEventListener("click",async e=>{
-  const button=e.target.closest("[data-donation-confirm]");
-
-  if(!button||!isAdmin) return;
-
-  if(!confirm("Você verificou o recebimento desta doação diretamente no Mercado Pago?")) return;
-
-  const {error}=await db
-    .from("doacoes")
-    .update({
-      status:"confirmada",
-      confirmado_em:new Date().toISOString(),
-      confirmado_por:currentUser.id
-    })
-    .eq("id",button.dataset.donationConfirm)
-    .eq("status","pendente");
-
-  if(error) {
-    alert(error.message);
-    return;
-  }
-
-  await loadAdminDonations();
-  await loadFinance();
-  alert("Doação atualizada. Confira o resumo financeiro.");
-});
-
-// RESUMO FINANCEIRO
-// Consulta a função RPC pública criada no Supabase.
-async function loadFinance() {
+async function loadFinance(){
   const {data,error}=await db.rpc("obter_resumo_publico");
-
-  if(error) {
-    console.error("Erro ao consultar obter_resumo_publico:",error);
-    $("publicFinance").textContent="Os indicadores financeiros estão sendo configurados.";
-    return;
-  }
-
-  // A função RETURNS TABLE normalmente retorna uma lista de registros.
-  const resumo=Array.isArray(data)?data[0]:data;
-
-  if(!resumo) {
-    console.error("A função obter_resumo_publico não retornou dados.");
-    $("publicFinance").textContent="Os indicadores financeiros ainda não estão disponíveis.";
-    return;
-  }
-
-  const confirmadas=Number(resumo.doacoes_confirmadas||0);
-  const arrecadado=Number(resumo.total_arrecadado||0);
-  const pendentes=Number(resumo.doacoes_pendentes||0);
-  const totalPendente=Number(resumo.total_pendente||0);
-
-  $("statConfirmed").textContent=confirmadas;
-  $("statTotal").textContent=money(arrecadado);
-  $("statPending").textContent=pendentes;
-  $("statPendingTotal").textContent=money(totalPendente);
-
-  $("publicFinance").innerHTML=`
-    <strong>Indicadores financeiros</strong><br>
-    Doações confirmadas: ${confirmadas}<br>
-    Total arrecadado: ${money(arrecadado)}
-  `;
+  if(error){console.error(error);$("publicFinance").textContent="Os indicadores financeiros estão sendo configurados.";return;}
+  const r=Array.isArray(data)?data[0]:data;if(!r){$("publicFinance").textContent="Indicadores ainda indisponíveis.";return;}
+  const confirmed=Number(r.doacoes_confirmadas||0),raised=Number(r.total_arrecadado||0),pending=Number(r.doacoes_pendentes||0),pendingTotal=Number(r.total_pendente||0);
+  if($("statConfirmed"))$("statConfirmed").textContent=confirmed;
+  if($("statTotal"))$("statTotal").textContent=money(raised);
+  if($("statPending"))$("statPending").textContent=pending;
+  if($("statPendingTotal"))$("statPendingTotal").textContent=money(pendingTotal);
+  $("publicFinance").innerHTML=`<strong>Indicadores financeiros</strong><br>Doações confirmadas: ${confirmed}<br>Total arrecadado: ${money(raised)}`;
 }
-
-// MOVIMENTAÇÕES FINANCEIRAS
 $("movementForm").addEventListener("submit",async e=>{
-  e.preventDefault();
-
-  if(!isAdmin) return;
-
-  const button=$("movementButton");
-  button.disabled=true;
-  button.textContent="Registrando...";
-
-  const movement={
-    tipo:$("movementType").value,
-    descricao:$("movementDescription").value.trim(),
-    valor:Number($("movementValue").value),
-    comprovante_url:$("movementProof").value.trim()||null
-  };
-
-  const {error}=await db.from("movimentacoes").insert(movement);
-
-  button.disabled=false;
-  button.textContent="Registrar movimentação";
-
-  if(error) {
-    showError("movementMessage",error);
-    return;
-  }
-
-  $("movementForm").reset();
-  message("movementMessage","Movimentação registrada!");
-  await loadAdminMovements();
+  e.preventDefault();if(!isAdmin)return;const b=$("movementButton");b.disabled=true;b.textContent="Registrando...";
+  const row={tipo:$("movementType").value,descricao:$("movementDescription").value.trim(),valor:Number($("movementValue").value),comprovante_url:$("movementProof").value.trim()||null};
+  const {error}=await db.from("movimentacoes").insert(row);b.disabled=false;b.textContent="Registrar movimentação";
+  if(error){showError("movementMessage",error);return;}$("movementForm").reset();message("movementMessage","Movimentação registrada!");await loadAdminMovements();
 });
-
-async function loadAdminMovements() {
-  const box=$("adminMovements");
-
-  const {data,error}=await db
-    .from("movimentacoes")
-    .select("*")
-    .order("criado_em",{ascending:false});
-
-  if(error) {
-    box.textContent="Erro: "+error.message;
-    return;
-  }
-
-  if(!data?.length) {
-    box.innerHTML='<div class="empty">Nenhuma movimentação registrada.</div>';
-    return;
-  }
-
-  box.innerHTML=`<table>
-    <thead>
-      <tr>
-        <th>Tipo</th>
-        <th>Descrição</th>
-        <th>Valor</th>
-        <th>Data</th>
-        <th>Comprovante</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${data.map(m=>`<tr>
-        <td>${escapeHTML(m.tipo)}</td>
-        <td>${escapeHTML(m.descricao)}</td>
-        <td>${money(m.valor)}</td>
-        <td>${m.criado_em?new Date(m.criado_em).toLocaleDateString("pt-BR"):"—"}</td>
-        <td>
-          ${m.comprovante_url
-            ?`<a href="${escapeHTML(m.comprovante_url)}" target="_blank" rel="noopener noreferrer">Visualizar</a>`
-            :"—"}
-        </td>
-      </tr>`).join("")}
-    </tbody>
-  </table>`;
+async function loadAdminMovements(){
+  const box=$("adminMovements"),{data,error}=await db.from("movimentacoes").select("*").order("criado_em",{ascending:false});
+  if(error){box.textContent="Erro: "+error.message;return;}if(!data?.length){box.innerHTML='<div class="empty">Nenhuma movimentação registrada.</div>';return;}
+  box.innerHTML=`<table><thead><tr><th>Tipo</th><th>Descrição</th><th>Valor</th><th>Data</th><th>Comprovante</th></tr></thead><tbody>${data.map(m=>`<tr><td>${escapeHTML(m.tipo)}</td><td>${escapeHTML(m.descricao)}</td><td>${money(m.valor)}</td><td>${m.criado_em?new Date(m.criado_em).toLocaleDateString("pt-BR"):"—"}</td><td>${m.comprovante_url?`<a href="${escapeHTML(m.comprovante_url)}" target="_blank" rel="noopener noreferrer">Visualizar</a>`:"—"}</td></tr>`).join("")}</tbody></table>`;
 }
-
-// INICIALIZAÇÃO
-async function initialize() {
-  await loadCampaigns();
-  await loadFinance();
-
-  const {data,error}=await db.auth.getSession();
-
-  if(error) {
-    console.error("Erro ao verificar sessão:",error);
-    showLogin();
-    return;
-  }
-
-  currentUser=data.session?.user||null;
-  await updateInterface();
-
-  db.auth.onAuthStateChange((event,session)=>{
-    currentUser=session?.user||null;
-
-    setTimeout(async()=>{
-      await updateInterface();
-    },0);
-  });
+async function initialize(){
+  await loadCampaigns();await loadFinance();
+  const {data,error}=await db.auth.getSession();if(error){console.error(error);showLogin();return;}
+  currentUser=data.session?.user||null;await updateInterface();
+  db.auth.onAuthStateChange((_event,session)=>{currentUser=session?.user||null;setTimeout(()=>updateInterface(),0);});
 }
-
 initialize();
 </script>
 </body>
