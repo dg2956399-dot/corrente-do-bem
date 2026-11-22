@@ -314,16 +314,25 @@ $("createCampaignForm").addEventListener("submit",async e=>{
  e.preventDefault();if(!requireAccount())return;
  const b=$("submitCampaign");b.disabled=true;b.textContent="Enviando...";
  try{
-  /* A criação depende da tabela, das políticas RLS e do bucket de imagens.
-     O envio abaixo usa os nomes de colunas já adotados no projeto. Fotos ficam para a etapa de Storage. */
-  const row={titulo:$("campaignTitle").value.trim(),descricao:$("campaignStory").value.trim(),categoria:$("campaignCategory").value,meta:Number($("campaignGoal").value),imagem_url:null,status:"pendente",user_id:currentUser.id};
+  /* Cadastro corrigido: user_id é usado para listar as campanhas do usuário.
+     criado_por atende à política RLS de INSERT e à leitura das próprias campanhas. */
+  const row={
+   titulo:$("campaignTitle").value.trim(),
+   descricao:$("campaignStory").value.trim(),
+   categoria:$("campaignCategory").value,
+   meta:Number($("campaignGoal").value),
+   imagem_url:null,
+   status:"pendente",
+   user_id:currentUser.id,
+   criado_por:currentUser.id
+  };
   const {data,error}=await db.from("campanhas").insert(row).select().single();
   if(error)throw error;
   if(selectedImages.length)toast("Campanha cadastrada. A integração de envio das fotos será conectada na próxima etapa.");
   showMessage("createMessage","Campanha enviada para análise! Ela será exibida após aprovação.");
   $("createCampaignForm").reset();selectedImages=[];$("imagePreview").innerHTML="";await loadMyCampaigns();await loadCampaigns();
   setTimeout(()=>closeModal("createModal"),1800);
- }catch(err){showMessage("createMessage","Não foi possível enviar. Verifique a tabela campanhas, a coluna user_id e as permissões RLS no Supabase. Detalhe: "+(err.message||"erro"),true);}
+ }catch(err){showMessage("createMessage","Não foi possível enviar. Verifique a tabela campanhas, as colunas user_id e criado_por e as permissões RLS no Supabase. Detalhe: "+(err.message||"erro"),true);}
  finally{b.disabled=false;b.textContent="Enviar para análise";}
 });
 async function loadMyCampaigns(){
@@ -458,4 +467,4 @@ async function initialize(){
 initialize();
 </script>
 </body>
-</html>
+ </html>
