@@ -22,8 +22,50 @@ footer{background:#102f58;color:#dbeaff;padding:35px 0 18px}.footer-grid{display
 @media(max-width:850px){.hero-grid,.about-grid,.detail-layout{grid-template-columns:1fr}.header-inner{padding:10px 0}nav{order:3;width:100%;justify-content:center}.steps{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.header-inner{justify-content:center}.header-actions{justify-content:center}.searchbox input{width:100%}.hero{padding:40px 0}.stats-grid,.form-grid,.footer-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero h1{font-size:35px}}
 </style>
+</style>
+</head>
+<body>
 
+<header>
+<div class="header-inner">
+<a class="logo" href="#inicio">
+<span>💙</span>
+<span>Corrente<br>do Bem<small style="display:block;font-size:10px">Juntos podemos mais!</small></span>
+</a>
+<nav>
+<a href="#inicio">Início</a>
+<a href="#campanhas">Campanhas</a>
+<a href="#sobre">Sobre</a>
+<a href="#campanhas">Histórias</a>
+<a href="#contato">Contato</a>
+</nav>
+<div class="header-actions">
+<div class="searchbox">
+<input id="campaignSearch" type="search" placeholder="Buscar campanhas...">
+</div>
+<button class="btn small" id="openCreateTop">＋ Criar campanha</button>
+</div>
+</div>
+</header>
 
+<main>
+
+<section class="hero" id="inicio">
+<div class="container hero-grid">
+<div>
+<h1>Doe, compartilhe,<br>espere e faça o bem!</h1>
+<p>Aqui, cada gesto transforma vidas.</p>
+<div style="margin-top:20px">
+<button class="btn" id="heroCreate" style="background:white;color:var(--blue)">＋ Criar campanha</button>
+<button class="btn outline" id="heroDonate">Doar agora</button>
+</div>
+</div>
+<div>
+<div class="hand-heart">🤲 ❤️</div>
+<div class="slogan">Juntos podemos mais!</div>
+</div>
+</div>
+</section>
 <div class="stats-strip"><div class="container stats-grid"><div><strong id="publicCampaignCount">—</strong><span>Campanhas publicadas</span></div><div><strong id="publicRaised">R$ 0,00</strong><span>Arrecadação confirmada</span></div><div><strong>100%</strong><span>Compromisso com transparência</span></div></div></div>
 <section id="campanhas"><div class="container"><div class="section-head"><h2>♡ Campanhas solidárias</h2><p>Conheça as histórias e ajude quem precisa:</p></div><div class="toolbar"><select id="categoryFilter"><option value="">Todas as categorias</option><option>Saúde</option><option>Ajuda animal</option><option>Ajuda a pessoas</option><option>Moradia</option><option>Emergência</option><option>Educação</option><option>Comunidade</option><option>Outra</option></select><select id="sortCampaigns"><option value="recent">Mais recentes</option><option value="goal">Maior meta</option><option value="progress">Maior progresso</option></select></div><div id="campaignList" class="cards"><div class="empty">Carregando campanhas...</div></div></div></section>
 <section class="how"><div class="container"><div class="section-head"><h2>Como funciona</h2><p>Uma corrente de solidariedade feita por todos.</p></div><div class="steps"><article class="step"><h3>1. Conheça uma história</h3><p>Veja as campanhas aprovadas e entenda cada necessidade.</p></article><article class="step"><h3>2. Faça sua doação</h3><p>Contribua usando o Pix da Corrente do Bem.</p></article><article class="step"><h3>3. Compartilhe</h3><p>Ajude a campanha a alcançar mais pessoas.</p></article></div></div></section>
