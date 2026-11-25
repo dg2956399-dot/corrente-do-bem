@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -128,6 +127,44 @@ th{background:#edf4fc;color:var(--blue)}
 .pix-code{width:100%;min-height:85px;padding:12px;border:1px solid var(--line);border-radius:8px;overflow-wrap:anywhere;background:#f5f8fc;margin:10px 0;font-size:12px;text-align:left}
 .pix-qr{display:block;max-width:260px;width:100%;margin:12px auto}
 .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#123b70;color:white;padding:11px 16px;border-radius:9px;z-index:200;max-width:90%;text-align:center}
+
+/* BOTÃO FLUTUANTE DA COMUNIDADE NO WHATSAPP */
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:22px;
+  z-index:90;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 19px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  box-shadow:0 5px 18px #0003;
+  transition:transform .2s,filter .2s;
+}
+.whatsapp-float:hover{
+  transform:translateY(-3px);
+  filter:brightness(1.05);
+}
+.whatsapp-float .whatsapp-icon{font-size:23px;line-height:1}
+.whatsapp-float:focus-visible{
+  outline:3px solid #123b70;
+  outline-offset:3px;
+}
+@media(max-width:560px){
+  .whatsapp-float{
+    right:14px;
+    bottom:15px;
+    padding:12px 16px;
+    font-size:12px;
+  }
+}
+
 @media(max-width:850px){
 .hero-grid,.about-grid,.detail-layout{grid-template-columns:1fr}
 .header-inner{padding:10px 0}
@@ -314,6 +351,18 @@ nav{order:3;width:100%;justify-content:center}
 </div>
 </footer>
 
+<!-- Botão fixo para abrir a comunidade oficial do Corrente do Bem -->
+<a
+  class="whatsapp-float"
+  href="https://chat.whatsapp.com/JaXJbrAsgl7IZ8rqCyxJiP"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Entrar na comunidade Corrente do Bem no WhatsApp"
+>
+  <span class="whatsapp-icon" aria-hidden="true">☘</span>
+  <span>Entre na nossa comunidade</span>
+</a>
+
 <div class="modal" id="createModal" role="dialog" aria-modal="true">
 <div class="modal-box wide">
 <div class="modal-top"><h2>＋ Criar campanha solidária</h2><button class="modal-close" data-close="createModal">Fechar</button></div>
@@ -366,9 +415,7 @@ const SUPABASE_URL="https://vfaqylbgnxzgvqgkvnct.supabase.co";
 const SUPABASE_KEY="sb_publishable_JhjIxw4Omb7MhpmMs8pEDQ_EaOEnt0H";
 const STORAGE_BUCKET="campanhas-midias";
 
-
 const PIX_CORRENTE_BEM="00020101021126580014BR.GOV.BCB.PIX0136cc57bdf5-b6f9-417b-befb-669d9b7d4c695204000053039865802BR5922DANIEL GONCALVES MOURA6008ACOPIARA62070503***6304F22E";
-
 
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const $=id=>document.getElementById(id);
