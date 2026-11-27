@@ -211,6 +211,274 @@ nav{order:3;width:100%;justify-content:center}
 <img src="https://vfaqylbgnxzgvqgkvnct.supabase.co/storage/v1/object/public/campanhas-midias/file_00000000a3dc820e9f9da94a97e79470.png" alt="Corrente do Bem - Mãos segurando um coração" style="display:block;width:100%;height:auto;margin:auto;border-radius:14px;">
 <div class="hero-buttons">
 <button class="btn hero-create" id="heroCreate">＋ Criar campanha</button>
+<button class="btn hero-donate" id="heroDonate">❤️Doar agora❤️</button>
+</div>
+</div>
+</section>
+
+<div class="stats-strip">
+<div class="container stats-grid" style="grid-template-columns:repeat(2,1fr)">
+<div><strong id="publicCampaignCount">—</strong><span>Campanhas publicadas</span></div>
+<div><strong>100%</strong><span>Compromisso com transparência</span></div>
+</div>
+</div>
+
+<section id="campanhas">
+<div class="container">
+<div class="section-head"><h2>♡ Campanhas solidárias</h2><p>Conheça as histórias e ajude quem precisa:</p></div>
+<div class="toolbar">
+<select id="categoryFilter">
+<option value="">Todas as categorias</option>
+<option>Saúde</option><option>Ajuda animal</option><option>Ajuda a pessoas</option><option>Moradia</option><option>Emergência</option><option>Educação</option><option>Comunidade</option><option>Outra</option>
+</select>
+<select id="sortCampaigns">
+<option value="recent">Mais recentes</option><option value="goal">Maior meta</option><option value="progress">Maior progresso</option>
+</select>
+</div>
+<div id="campaignList" class="cards"><div class="empty">Carregando campanhas...</div></div>
+</div>
+</section>
+
+<section class="how">
+<div class="container">
+<div class="section-head"><h2>Como funciona</h2><p>Uma corrente de solidariedade feita por todos.</p></div>
+<div class="steps">
+<article class="step"><h3>1. Conheça uma história</h3><p>Veja as campanhas aprovadas e entenda cada necessidade.</p></article>
+<article class="step"><h3>2. Faça sua doação</h3><p>Contribua usando o Pix da Corrente do Bem.</p></article>
+<article class="step"><h3>3. Compartilhe</h3><p>Ajude a campanha a alcançar mais pessoas.</p></article>
+</div>
+</div>
+</section>
+
+<section id="sobre">
+<div class="container about-grid">
+<div>
+<h2>Juntos podemos fazer a diferença.</h2>
+<p>A Corrente do Bem conecta pessoas, fortalece iniciativas solidárias e incentiva a transparência. Cada campanha passa por análise antes de ser publicada.</p>
+<button class="btn" id="aboutCreate" style="margin-top:15px">Criar campanha</button>
+</div>
+<div class="about-panel"><div style="font-size:48px">💙</div><h3>Solidariedade com responsabilidade</h3><p>Respeito, cuidado e transparência com cada história.</p></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="notice">
+<h3>Transparência e confiança</h3>
+<p>Somente campanhas aprovadas pela administração aparecem publicamente. As doações via Pix fixo precisam ser conferidas e registradas manualmente pela equipe.</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0754B8">
+<meta name="description" content="Corrente do Bem: campanhas solidárias, doações e transparência.">
+<title>Corrente do Bem 💙</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+:root{--blue:#0754b8;--blue2:#1674d1;--navy:#123b70;--pale:#eaf3ff;--bg:#f7faff;--ink:#172b49;--muted:#66758b;--line:#dce6f2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:var(--blue)}
+.hidden{display:none!important}
+.container{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.header-inner{width:min(1240px,94%);margin:auto;min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--navy);font-weight:900;font-size:22px;line-height:1.05}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:#263b58;font-weight:700;font-size:14px}
+.header-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.btn{border:0;border-radius:25px;background:var(--blue);color:#fff;padding:12px 19px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.btn:hover{background:var(--navy)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn.outline{background:#fff;color:var(--blue);border:1px solid #8eb4e3}
+.btn.small{padding:8px 13px;font-size:13px}
+.btn.danger{background:#b83232}
+.searchbox input,.toolbar input,.toolbar select{border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 13px}
+.searchbox input{border-radius:25px;width:220px}
+.hero{background:linear-gradient(105deg,#064aa7,#0866c9 58%,#073d86);color:white;padding:55px 0}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px}
+.hero h1{font-size:clamp(34px,4.7vw,53px);line-height:1.08}
+.hero p{font-size:19px;margin-top:14px;color:#e4f0ff}
+.hand-heart{font-size:90px;text-align:center}
+.slogan{text-align:center;font-size:24px;font-weight:800}
+.hero-buttons{margin-top:22px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.hero-buttons .btn{padding:14px 25px;color:white;border:0;box-shadow:0 4px 12px #002b6680;transition:transform .2s,filter .2s}
+.hero-buttons .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.hero-create{background:#0754b8}
+.hero-donate{background:#1674d1}
+section{padding:45px 0}
+.section-head{margin-bottom:22px}
+.section-head h2{font-size:30px;color:var(--navy)}
+.section-head p,.hint{color:var(--muted)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.toolbar input{flex:1;min-width:200px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:19px}
+.card,.step,.about-panel,.notice,.panel-box{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px #123b7012}
+.card{overflow:hidden;display:flex;flex-direction:column}
+.media-cover{width:100%;height:175px;object-fit:cover;background:#e8f1fb}
+.card-body{padding:15px;display:flex;flex-direction:column;flex:1}
+.tag{display:inline-flex;align-self:flex-start;background:var(--blue);color:#fff;padding:4px 11px;border-radius:20px;font-size:11px;font-weight:800}
+.card h3{font-size:19px;color:var(--navy);margin:8px 0}
+.card p{font-size:14px;color:#52647b}
+.progress{height:9px;background:#e1e8f1;border-radius:20px;overflow:hidden;margin:9px 0 5px}
+.progress div{height:100%;background:linear-gradient(90deg,#0754b8,#4c9ae8)}
+.moneyline{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:#66758b}
+.moneyline strong{color:var(--navy)}
+.card-actions{display:grid;gap:7px;margin-top:13px}
+.card-actions .btn{width:100%}
+.text-link{border:0;background:none;color:var(--blue);font-weight:800;padding:6px}
+.empty{background:#fff;border:1px dashed #bdcde0;border-radius:13px;padding:30px;text-align:center;color:var(--muted);grid-column:1/-1}
+.stats-strip{background:white;border-block:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;text-align:center;padding:18px 0}
+.stats-grid strong{display:block;color:var(--blue);font-size:22px}
+.stats-grid span{font-size:13px;color:var(--muted)}
+.how,.panel{background:#edf4fc}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.step,.about-panel,.notice{padding:22px}
+.step p,.about-grid p{color:var(--muted);font-size:14px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}
+.about-grid h2{color:var(--navy);font-size:30px;margin:8px 0}
+.notice{border-left:5px solid var(--blue);max-width:900px;margin:auto}
+.faq-list{max-width:850px;margin:auto;display:grid;gap:9px}
+.faq-list details{background:white;border:1px solid var(--line);border-radius:10px;padding:15px}
+.faq-list summary{font-weight:800;cursor:pointer;color:var(--navy)}
+.faq-list p{padding-top:9px;color:var(--muted)}
+.cta{background:var(--navy);color:white;text-align:center;border-radius:18px;padding:32px}
+.cta p{color:#dbeaff}
+footer{background:#102f58;color:#dbeaff;padding:35px 0 18px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:22px}
+.footer-grid h3,.footer-grid h4{color:white;margin-bottom:10px}
+.footer-grid p,.footer-grid a{font-size:13px;color:#d2e2f5}
+.footer-grid a{display:block;text-decoration:none;margin:6px 0}
+.copyright{text-align:center;border-top:1px solid #ffffff25;margin-top:22px;padding-top:15px;font-size:12px}
+.panel-box{padding:23px}
+.panel h2{color:var(--blue);margin-bottom:13px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field.full{grid-column:1/-1}
+.field label{display:block;font-size:13px;font-weight:800;margin-bottom:5px;color:#40536b}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px;background:white}
+.field textarea{min-height:110px;resize:vertical}
+.message{padding:11px;border-radius:8px;margin:10px 0;font-size:13px;background:#e8f3ff;color:var(--blue)}
+.message.error{background:#fff0ef;color:#b83232}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:18px 0}
+.stat{background:#edf4fc;padding:14px;border-radius:10px}
+.stat span{display:block;font-size:12px;color:var(--muted)}
+.stat strong{color:var(--blue);font-size:20px}
+.table-wrap{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid #edf0f4;font-size:12px}
+th{background:#edf4fc;color:var(--blue)}
+.admin-value-input{width:115px;max-width:100%;padding:8px;border:1px solid var(--line);border-radius:8px}
+.admin-action-cell{min-width:245px}
+.admin-action-cell .btn{margin:3px}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:14px;z-index:100}
+.modal.active{display:flex}
+.modal-box{background:white;width:100%;max-width:600px;padding:22px;border-radius:15px;max-height:92vh;overflow:auto}
+.modal-box.wide{max-width:900px}
+.modal-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
+.modal-top h2{color:var(--blue);font-size:21px}
+.modal-close{border:0;background:#edf2f7;border-radius:8px;padding:8px 11px}
+.preview-grid,.detail-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:12px 0}
+.preview-item{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#f4f8fd}
+.preview-item img,.preview-item video{width:100%;height:115px;object-fit:cover;display:block}
+.preview-item button{position:absolute;right:5px;top:5px;border:0;border-radius:50%;background:#b83232;color:white;width:25px;height:25px}
+.detail-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:17px}
+.detail-main,.detail-side{border:1px solid var(--line);border-radius:12px;padding:16px}
+.detail-main img,.detail-main video{width:100%;max-height:370px;object-fit:cover;border-radius:9px;margin-bottom:10px}
+.pix-code{width:100%;min-height:85px;padding:12px;border:1px solid var(--line);border-radius:8px;overflow-wrap:anywhere;background:#f5f8fc;margin:10px 0;font-size:12px;text-align:left}
+.pix-qr{display:block;max-width:260px;width:100%;margin:12px auto}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#123b70;color:white;padding:11px 16px;border-radius:9px;z-index:200;max-width:90%;text-align:center}
+
+/* BOTÃO FLUTUANTE DA COMUNIDADE NO WHATSAPP */
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:22px;
+  z-index:90;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 19px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  box-shadow:0 5px 18px #0003;
+  transition:transform .2s,filter .2s;
+}
+.whatsapp-float:hover{
+  transform:translateY(-3px);
+  filter:brightness(1.05);
+}
+.whatsapp-float .whatsapp-icon{font-size:23px;line-height:1}
+.whatsapp-float:focus-visible{
+  outline:3px solid #123b70;
+  outline-offset:3px;
+}
+@media(max-width:560px){
+  .whatsapp-float{
+    right:14px;
+    bottom:15px;
+    padding:12px 16px;
+    font-size:12px;
+  }
+}
+
+@media(max-width:850px){
+.hero-grid,.about-grid,.detail-layout{grid-template-columns:1fr}
+.header-inner{padding:10px 0}
+nav{order:3;width:100%;justify-content:center}
+.steps{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+.header-inner{justify-content:center}
+.header-actions{justify-content:center}
+.searchbox input{width:100%}
+.hero{padding:20px 0}
+.stats-grid,.form-grid,.footer-grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.hero h1{font-size:35px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<div class="header-inner">
+<a class="logo" href="#inicio">
+<span>💙</span>
+<span>Corrente<br>do Bem<small style="display:block;font-size:10px">Juntos podemos mais!</small></span>
+</a>
+<nav>
+<a href="#inicio">Início</a>
+<a href="#campanhas">Campanhas</a>
+<a href="#sobre">Sobre</a>
+<a href="#campanhas">Histórias</a>
+<a href="#contato">Contato</a>
+</nav>
+<div class="header-actions">
+<div class="searchbox"><input id="campaignSearch" type="search" placeholder="Buscar campanhas..."></div>
+<button class="btn small" id="openCreateTop">＋ Criar campanha</button>
+</div>
+</div>
+</header>
+
+<main>
+<section class="hero" id="inicio" style="padding:20px 0;background:#0754b8;">
+<div class="container" style="width:100%;max-width:1160px;text-align:center;">
+<img src="https://vfaqylbgnxzgvqgkvnct.supabase.co/storage/v1/object/public/campanhas-midias/file_00000000a3dc820e9f9da94a97e79470.png" alt="Corrente do Bem - Mãos segurando um coração" style="display:block;width:100%;height:auto;margin:auto;border-radius:14px;">
+<div class="hero-buttons">
+<button class="btn hero-create" id="heroCreate">＋ Criar campanha</button>
 <button class="btn hero-donate" id="heroDonate">💙 Doar agora</button>
 </div>
 </div>
@@ -267,6 +535,735 @@ nav{order:3;width:100%;justify-content:center}
 <h3>Transparência e confiança</h3>
 <p>Somente campanhas aprovadas pela administração aparecem publicamente. As doações via Pix fixo precisam ser conferidas e registradas manualmente pela equipe.</p>
 <div id="publicFinance" class="hint">Indicadores financeiros serão exibidos aqui.</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-head"><h2>Perguntas frequentes</h2></div>
+<div class="faq-list">
+<details><summary>Preciso criar uma conta para enviar campanha?</summary><p>Não. Você pode enviar a campanha sem criar conta. Ela ficará pendente até a aprovação da administração.</p></details>
+<details><summary>Quando minha campanha aparece no site?</summary><p>Assim que a administração aprovar, ela será exibida automaticamente na página principal.</p></details>
+<details><summary>Posso adicionar fotos e vídeos?</summary><p>Sim. O formulário permite selecionar várias fotos e vídeos. O armazenamento precisa estar configurado no Supabase.</p></details>
+</div>
+</div>
+</section>
+
+<section id="contato">
+<div class="container">
+<div class="cta">
+<h2>Uma atitude pode transformar uma história.</h2>
+<p>Ajude a espalhar esperança. Faça parte da Corrente do Bem.</p>
+<button class="btn" id="ctaCreate" style="background:white;color:var(--blue);margin-top:15px">＋ Criar campanha</button>
+</div>
+</div>
+</section>
+
+<section class="panel" id="administracao">
+<div class="container panel-box">
+<div id="adminLoginArea">
+<h2>🛡️ Administração</h2>
+<p class="hint">Área exclusiva da equipe responsável.</p>
+<form id="adminLoginForm" class="form-grid" style="max-width:700px;margin-top:15px">
+<div class="field"><label for="adminEmailInput">E-mail administrativo</label><input id="adminEmailInput" type="email" required autocomplete="username"></div>
+<div class="field"><label for="adminPasswordInput">Senha</label><input id="adminPasswordInput" type="password" required autocomplete="current-password"></div>
+<div class="field full"><button class="btn" type="submit" id="adminLoginButton">Entrar na administração</button><div id="adminLoginMessage"></div></div>
+</form>
+</div>
+
+<div id="adminArea" class="hidden">
+<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+<h2>Painel administrativo</h2><button class="btn danger small" id="adminLogout">Sair</button>
+</div>
+<p id="adminIdentity" class="hint"></p>
+<div class="stats">
+<div class="stat"><span>Doações confirmadas (registro manual)</span><strong id="statConfirmed">—</strong></div>
+<div class="stat"><span>Total arrecadado</span><strong id="statTotal">—</strong></div>
+<div class="stat"><span>Doações pendentes</span><strong id="statPending">—</strong></div>
+<div class="stat"><span>Total pendente</span><strong id="statPendingTotal">—</strong></div>
+</div>
+
+<h3>Gerenciar campanhas</h3>
+<p class="hint">Você pode aprovar, recusar e atualizar manualmente o valor arrecadado de cada campanha.</p>
+<div id="adminCampaigns" class="table-wrap">Carregando...</div>
+
+<h3>Controle de doações registradas</h3>
+<div id="adminDonations" class="table-wrap"></div>
+
+<h3>Registrar movimentação</h3>
+<form id="movementForm" class="form-grid">
+<div class="field"><label for="movementType">Tipo</label><select id="movementType"><option value="entrada">Entrada</option><option value="saida">Saída</option></select></div>
+<div class="field"><label for="movementValue">Valor (R$)</label><input id="movementValue" type="number" min=".01" step=".01" required></div>
+<div class="field"><label for="movementDescription">Descrição</label><input id="movementDescription" maxlength="300" required></div>
+<div class="field"><label for="movementProof">Comprovante (URL)</label><input id="movementProof" type="url"></div>
+<div class="field full"><button class="btn" type="submit" id="movementButton">Registrar movimentação</button><div id="movementMessage"></div></div>
+</form>
+
+<h3>Histórico financeiro</h3>
+<div id="adminMovements" class="table-wrap"></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div><h3>💙 Corrente do Bem</h3><p>Juntos podemos mais. Solidariedade, cuidado e transparência.</p></div>
+<div><h4>Navegação</h4><a href="#inicio">Início</a><a href="#campanhas">Campanhas</a><a href="#sobre">Sobre</a></div>
+<div><h4>Informações</h4><a href="#contato">Contato</a><a href="#administracao">Administração</a></div>
+</div>
+<div class="copyright">© 2026 Corrente do Bem. Todos os direitos reservados.</div>
+</div>
+</footer>
+
+
+<!-- Botão fixo da comunidade Corrente do Bem -->
+<a
+  class="whatsapp-float"
+  href="https://chat.whatsapp.com/JaXJbrAsgl7IZ8rqCyxJiP"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Entrar na comunidade Corrente do Bem no WhatsApp"
+>
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="white" aria-hidden="true">
+    <path d="M16 3C9 3 3.5 8.4 3.5 15c0 2.4.7 4.7 2 6.7L3 29l7.5-2.4c1.7.9 3.6 1.4 5.5 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 22.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.4 1.4 1.4-4.3-.3-.4A9.7 9.7 0 1 1 16 25.8zm5.3-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5 .8.3 1.4.5 1.9.6.8.3 1.5.2 2 .1.6-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z"/>
+  </svg>
+  <span>Entre na nossa comunidade</span>
+</a>
+
+
+<div class="modal" id="createModal" role="dialog" aria-modal="true">
+<div class="modal-box wide">
+<div class="modal-top"><h2>＋ Criar campanha solidária</h2><button class="modal-close" data-close="createModal">Fechar</button></div>
+<p class="hint" style="margin-bottom:12px">Envie sua história. A campanha só será publicada depois da aprovação da equipe.</p>
+<form id="createCampaignForm">
+<div class="form-grid">
+<div class="field"><label for="campaignTitle">Título da campanha *</label><input id="campaignTitle" maxlength="100" required placeholder="Ex.: Juntos pela Ana"></div>
+<div class="field"><label for="campaignCategory">Categoria *</label><select id="campaignCategory" required><option value="">Selecione</option><option>Saúde</option><option>Ajuda animal</option><option>Ajuda a pessoas</option><option>Moradia</option><option>Emergência</option><option>Educação</option><option>Comunidade</option><option>Outra</option></select></div>
+<div class="field full"><label for="campaignStory">Conte a história completa *</label><textarea id="campaignStory" minlength="40" maxlength="5000" required></textarea><div class="hint"><span id="storyCount">0</span>/5000 caracteres (mínimo 40).</div></div>
+<div class="field"><label for="campaignGoal">Meta de arrecadação (R$) *</label><input id="campaignGoal" type="number" min="1" max="10000000" step=".01" required></div>
+<div class="field full"><label for="campaignMedia">Fotos e vídeos adicionais</label><input id="campaignMedia" type="file" accept="image/*,video/mp4,video/webm,video/quicktime" multiple><div class="hint">Até 8 arquivos, fotos até 8 MB e vídeos até 40 MB cada.</div><div id="mediaPreview" class="preview-grid"></div></div>
+<div class="field full"><label><input type="checkbox" id="campaignTerms" required style="width:auto"> Confirmo que as informações são verdadeiras e autorizo a análise.</label></div>
+</div>
+<div class="hint">Não envie documentos pessoais ou dados bancários nas mídias públicas.</div>
+<div id="createMessage"></div>
+<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px">
+<button class="btn" type="submit" id="submitCampaign">Enviar para análise</button><button class="btn outline" type="button" data-close="createModal">Cancelar</button>
+</div>
+</form>
+</div>
+</div>
+
+<div class="modal" id="donationModal" role="dialog" aria-modal="true">
+<div class="modal-box">
+<div class="modal-top"><h2>💙 Faça sua doação</h2><button class="modal-close" data-close="donationModal">Fechar</button></div>
+<p id="donationContext" class="hint">Sua contribuição ajuda a Corrente do Bem.</p>
+<div style="text-align:center;padding:12px 0">
+<h3 style="color:var(--blue)">Doe pelo Pix</h3><p class="hint">Escaneie o QR Code pelo aplicativo do seu banco.</p>
+<div id="pixQr" class="pix-qr" role="img" aria-label="QR Code Pix para doação"></div>
+<h3 style="color:var(--blue);margin-top:15px">Pix Copia e Cola</h3>
+<div id="pixCopyCode" class="pix-code"></div>
+<button class="btn" id="copyPixButton" type="button" style="width:100%">📋 COPIAR CÓDIGO PIX</button>
+<p class="hint" style="margin-top:14px">Obrigado por fazer parte dessa corrente de solidariedade! 💙</p>
+</div>
+</div>
+</div>
+
+<div class="modal" id="detailModal" role="dialog" aria-modal="true">
+<div class="modal-box wide">
+<div class="modal-top"><h2 id="detailTitle">Detalhes da campanha</h2><button class="modal-close" data-close="detailModal">Fechar</button></div>
+<div id="detailContent"></div>
+</div>
+</div>
+
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script>
+/* Mantenha somente a chave publishable/anon no navegador. */
+const SUPABASE_URL="https://vfaqylbgnxzgvqgkvnct.supabase.co";
+const SUPABASE_KEY="sb_publishable_JhjIxw4Omb7MhpmMs8pEDQ_EaOEnt0H";
+const STORAGE_BUCKET="campanhas-midias";
+
+const PIX_CORRENTE_BEM="00020101021126580014BR.GOV.BCB.PIX0136cc57bdf5-b6f9-417b-befb-669d9b7d4c695204000053039865802BR5922DANIEL GONCALVES MOURA6008ACOPIARA62070503***6304F22E";
+
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+
+let currentUser=null,isAdmin=false,campaignsCache=[],selectedMedia=[],previewUrls=[];
+
+const money=v=>Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+
+function msg(id,t,error=false){
+const el=$(id);
+if(el){el.textContent=t;el.className="message"+(error?" error":"")}
+}
+
+function toast(t){
+$("toast").textContent=t;
+$("toast").classList.remove("hidden");
+clearTimeout(toast.timer);
+toast.timer=setTimeout(()=>$("toast").classList.add("hidden"),3200);
+}
+
+function openModal(id){
+$(id).classList.add("active");
+document.body.style.overflow="hidden";
+}
+
+function closeModal(id){
+$(id).classList.remove("active");
+document.body.style.overflow="";
+}
+
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>closeModal(b.dataset.close));
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)closeModal(m.id)}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".modal.active").forEach(m=>closeModal(m.id))});
+
+function openDonation(id=null,title=""){
+$("donationContext").textContent=id?"Sua contribuição ajuda esta campanha: "+title:"Sua doação ajuda a Corrente do Bem.";
+$("pixCopyCode").textContent=PIX_CORRENTE_BEM;
+openModal("donationModal");
+}
+
+new QRCode($("pixQr"),{
+text:PIX_CORRENTE_BEM,width:256,height:256,
+colorDark:"#000000",colorLight:"#ffffff",
+correctLevel:QRCode.CorrectLevel.M
+});
+
+$("copyPixButton").onclick=async()=>{
+try{
+await navigator.clipboard.writeText(PIX_CORRENTE_BEM);
+toast("Pix copiado com sucesso! 💙");
+}catch{
+const t=document.createElement("textarea");
+t.value=PIX_CORRENTE_BEM;document.body.appendChild(t);t.select();
+const ok=document.execCommand("copy");t.remove();
+toast(ok?"Pix copiado! 💙":"Não foi possível copiar automaticamente. Selecione o código.");
+}
+};
+
+$("heroDonate").onclick=()=>openDonation();
+
+function clearMedia(){
+previewUrls.forEach(URL.revokeObjectURL);
+previewUrls=[];selectedMedia=[];
+$("campaignMedia").value="";
+$("mediaPreview").innerHTML="";
+}
+
+function openCreate(){
+$("createCampaignForm").reset();
+$("storyCount").textContent="0";
+$("createMessage").textContent="";
+clearMedia();
+openModal("createModal");
+}
+
+["openCreateTop","heroCreate","aboutCreate","ctaCreate"].forEach(id=>$(id).onclick=openCreate);
+
+$("campaignStory").addEventListener("input",()=>{$("storyCount").textContent=$("campaignStory").value.length});
+
+$("campaignMedia").addEventListener("change",()=>{
+for(const f of Array.from($("campaignMedia").files||[])){
+if(selectedMedia.length>=8){msg("createMessage","Máximo de 8 arquivos.",true);break}
+const image=f.type.startsWith("image/");
+const video=f.type.startsWith("video/");
+const limit=video?40*1024*1024:8*1024*1024;
+if((!image&&!video)||f.size>limit){msg("createMessage","Arquivo inválido ou acima do limite: "+f.name,true);continue}
+selectedMedia.push(f);
+}
+renderPreview();
+$("campaignMedia").value="";
+});
+
+function renderPreview(){
+previewUrls.forEach(URL.revokeObjectURL);
+previewUrls=[];
+$("mediaPreview").innerHTML=selectedMedia.map((f,i)=>{
+const url=URL.createObjectURL(f);previewUrls.push(url);
+const media=f.type.startsWith("video/")?`<video src="${url}" controls muted></video>`:`<img src="${url}" alt="Prévia">`;
+return `<div class="preview-item">${media}<button type="button" data-remove-media="${i}">×</button></div>`;
+}).join("");
+}
+
+$("mediaPreview").addEventListener("click",e=>{
+const b=e.target.closest("[data-remove-media]");
+if(b){selectedMedia.splice(Number(b.dataset.removeMedia),1);renderPreview()}
+});
+
+async function uploadMedia(files){
+const result=[];
+for(const file of files){
+const safe=file.name.normalize("NFKD").replace(/[^a-zA-Z0-9._-]/g,"_").slice(-90);
+const path=`campanhas/${crypto.randomUUID()}-${safe}`;
+const {error}=await db.storage.from(STORAGE_BUCKET).upload(path,file,{
+cacheControl:"3600",upsert:false,contentType:file.type
+});
+if(error)throw new Error("Falha ao enviar mídia. Confira bucket e políticas: "+error.message);
+const {data}=db.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+result.push({url:data.publicUrl,tipo:file.type.startsWith("video/")?"video":"imagem",nome:file.name});
+}
+return result;
+}
+
+$("createCampaignForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const title=$("campaignTitle").value.trim();
+const story=$("campaignStory").value.trim();
+const category=$("campaignCategory").value;
+const goal=Number($("campaignGoal").value);
+const b=$("submitCampaign");
+
+if(title.length<3||story.length<40||!Number.isFinite(goal)||goal<=0){
+msg("createMessage","Confira título, história e meta.",true);return;
+}
+
+b.disabled=true;b.textContent="Enviando...";
+try{
+const uploaded=selectedMedia.length?await uploadMedia(selectedMedia):[];
+const row={
+titulo:title,descricao:story,categoria:category,meta:goal,
+valor_arrecadado:0,
+imagem_url:uploaded.find(m=>m.tipo==="imagem")?.url||null,
+midias:uploaded,status:"pendente",
+criado_em:new Date().toISOString(),user_id:null,criado_por:null
+};
+const {error}=await db.from("campanhas").insert(row);
+if(error)throw error;
+msg("createMessage","Campanha enviada para análise!");
+$("createCampaignForm").reset();clearMedia();
+setTimeout(()=>closeModal("createModal"),1500);
+}catch(err){
+console.error(err);msg("createMessage","Não foi possível enviar. "+err.message,true);
+}finally{
+b.disabled=false;b.textContent="Enviar para análise";
+}
+});
+
+function mediaArray(c){
+if(Array.isArray(c.midias))return c.midias;
+if(c.imagem_url)return[{url:c.imagem_url,tipo:"imagem"}];
+return[];
+}
+
+function mediaMarkup(m,cls="media-cover"){
+const url=esc(m.url||"");
+if(!url)return"";
+return m.tipo==="video"
+?`<video class="${cls}" src="${url}" controls preload="metadata"></video>`
+:`<img class="${cls}" src="${url}" alt="Imagem da campanha" loading="lazy" onerror="this.style.display='none'">`;
+}
+
+async function loadCampaigns(){
+const box=$("campaignList");
+const {data,error}=await db.from("campanhas").select("*").eq("status","aprovada").order("criado_em",{ascending:false});
+if(error){
+console.error(error);
+box.innerHTML='<div class="empty">Não foi possível carregar campanhas. Confira conexão e permissões.</div>';
+return;
+}
+campaignsCache=data||[];
+renderCampaigns();
+$("publicCampaignCount").textContent=campaignsCache.length;
+$("publicRaised").textContent=money(campaignsCache.reduce((s,c)=>s+Number(c.valor_arrecadado||0),0));
+}
+
+function renderCampaigns(){
+const q=$("campaignSearch").value.trim().toLowerCase();
+const cat=$("categoryFilter").value;
+const sort=$("sortCampaigns").value;
+let list=campaignsCache.filter(c=>
+(!cat||c.categoria===cat)&&
+(!q||[c.titulo,c.descricao,c.categoria].some(v=>String(v||"").toLowerCase().includes(q)))
+);
+
+if(sort==="goal")list.sort((a,b)=>Number(b.meta||0)-Number(a.meta||0));
+if(sort==="progress")list.sort((a,b)=>
+Number(b.valor_arrecadado||0)/Math.max(1,Number(b.meta||1))-
+Number(a.valor_arrecadado||0)/Math.max(1,Number(a.meta||1))
+);
+
+const box=$("campaignList");
+if(!list.length){box.innerHTML='<div class="empty">Nenhuma campanha encontrada.</div>';return}
+
+box.innerHTML=list.map(c=>{
+const goal=Number(c.meta||0);
+const raised=Number(c.valor_arrecadado||0);
+const pct=goal?Math.min(100,Math.max(0,raised/goal*100)):0;
+const media=mediaArray(c)[0];
+return `<article class="card">
+${media?mediaMarkup(media):'<div class="media-cover" style="display:grid;place-items:center;font-size:55px">💙</div>'}
+<div class="card-body">
+<span class="tag">${esc(c.categoria||"Solidariedade")}</span>
+<h3>${esc(c.titulo)}</h3>
+<p>${esc((c.descricao||"").slice(0,115))}${(c.descricao||"").length>115?"…":""}</p>
+<div style="margin-top:auto">
+<div class="moneyline"><span>Arrecadado</span><strong>${money(raised)}</strong></div>
+<div class="progress"><div style="width:${pct}%"></div></div>
+<div class="moneyline"><span>Meta ${money(goal)}</span><strong>${pct.toFixed(0)}%</strong></div>
+<div class="card-actions">
+<button class="btn small" data-donate="${esc(c.id)}">◇ Doar via Pix</button>
+<button class="text-link" data-detail="${esc(c.id)}">Ver campanha →</button>
+</div>
+</div>
+</div>
+</article>`;
+}).join("");
+}
+
+$("campaignSearch").oninput=renderCampaigns;
+$("categoryFilter").onchange=renderCampaigns;
+$("sortCampaigns").onchange=renderCampaigns;
+
+$("campaignList").addEventListener("click",e=>{
+const d=e.target.closest("[data-donate]");
+if(d){
+const c=campaignsCache.find(x=>String(x.id)===d.dataset.donate);
+if(c)openDonation(c.id,c.titulo);
+return;
+}
+const v=e.target.closest("[data-detail]");
+if(v){
+const c=campaignsCache.find(x=>String(x.id)===v.dataset.detail);
+if(c)openDetails(c);
+}
+});
+
+function openDetails(c){
+const goal=Number(c.meta||0);
+const raised=Number(c.valor_arrecadado||0);
+const pct=goal?Math.min(100,raised/goal*100):0;
+const medias=mediaArray(c);
+$("detailTitle").textContent=c.titulo;
+const gallery=medias.length?medias.map(m=>mediaMarkup(m,"")).join(""):'<div style="font-size:65px;text-align:center">💙</div>';
+
+$("detailContent").innerHTML=`
+<div class="detail-layout">
+<div class="detail-main">
+<div class="detail-gallery">${gallery}</div>
+<span class="tag">${esc(c.categoria||"Solidariedade")}</span>
+<h2 style="color:var(--navy);margin:10px 0">${esc(c.titulo)}</h2>
+<p style="white-space:pre-wrap">${esc(c.descricao||"")}</p>
+<button class="btn outline small" id="shareCampaign" style="margin-top:15px">↗ Compartilhar</button>
+</div>
+<aside class="detail-side">
+<h3>História da campanha</h3>
+<p style="font-size:13px;color:var(--muted);margin:7px 0 15px">${esc((c.descricao||"").slice(0,150))}</p>
+<div class="moneyline"><span>Arrecadado</span><strong>${money(raised)}</strong></div>
+<div class="moneyline"><span>Meta</span><strong>${money(goal)}</strong></div>
+<div class="progress"><div style="width:${pct}%"></div></div>
+<strong style="color:var(--blue)">${pct.toFixed(0)}% da meta</strong>
+<button class="btn" id="detailDonate" style="width:100%;margin-top:16px">◇ Doar via Pix</button>
+<p class="hint" style="margin-top:10px">Campanha aprovada pela equipe.</p>
+</aside>
+</div>`;
+
+$("detailDonate").onclick=()=>{closeModal("detailModal");openDonation(c.id,c.titulo)};
+$("shareCampaign").onclick=()=>shareCampaign(c);
+openModal("detailModal");
+}
+
+async function shareCampaign(c){
+const url=location.href.split("#")[0]+"#campanhas";
+const text="Conheça esta campanha na Corrente do Bem: "+c.titulo+" - "+url;
+if(navigator.share){
+try{await navigator.share({title:c.titulo,text,url})}catch{}
+}else{
+try{await navigator.clipboard.writeText(text);toast("Link copiado!")}
+catch{toast(url)}
+}
+}
+
+/* ADMINISTRAÇÃO */
+
+async function checkAdmin(){
+if(!currentUser)return false;
+const {data,error}=await db.rpc("is_admin");
+if(error){console.error(error);return false}
+return data===true;
+}
+
+$("adminLoginForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const b=$("adminLoginButton");
+b.disabled=true;b.textContent="Verificando...";
+try{
+const {data,error}=await db.auth.signInWithPassword({
+email:$("adminEmailInput").value.trim(),
+password:$("adminPasswordInput").value
+});
+if(error)throw error;
+currentUser=data.user;
+if(!await checkAdmin()){
+await db.auth.signOut();currentUser=null;
+throw new Error("Esta conta não possui permissão de administrador.");
+}
+isAdmin=true;
+$("adminLoginArea").classList.add("hidden");
+$("adminArea").classList.remove("hidden");
+$("adminIdentity").textContent="Administrador conectado: "+currentUser.email;
+await loadAdminData();
+}catch(err){
+msg("adminLoginMessage",err.message,true);
+}finally{
+b.disabled=false;b.textContent="Entrar na administração";
+}
+});
+
+$("adminLogout").onclick=async()=>{
+await db.auth.signOut();
+currentUser=null;isAdmin=false;
+$("adminArea").classList.add("hidden");
+$("adminLoginArea").classList.remove("hidden");
+toast("Você saiu da administração.");
+};
+
+async function loadAdminData(){
+await Promise.all([loadAdminCampaigns(),loadAdminDonations(),loadAdminMovements(),loadFinance()]);
+}
+
+/* Lista administrativa: agora inclui o campo de edição do valor arrecadado. */
+async function loadAdminCampaigns(){
+const box=$("adminCampaigns");
+const {data,error}=await db.from("campanhas").select("*").order("criado_em",{ascending:false});
+if(error){box.textContent="Erro: "+error.message;return}
+if(!data?.length){box.textContent="Nenhuma campanha cadastrada.";return}
+
+box.innerHTML=`<table>
+<thead>
+<tr>
+<th>Campanha</th>
+<th>Meta</th>
+<th>Valor arrecadado (R$)</th>
+<th>Status</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody>
+${data.map(c=>`
+<tr>
+<td>${esc(c.titulo)}</td>
+<td>${money(c.meta)}</td>
+<td>
+<input
+class="admin-value-input"
+type="number"
+min="0"
+step="0.01"
+inputmode="decimal"
+aria-label="Valor arrecadado da campanha ${esc(c.titulo)}"
+value="${Number(c.valor_arrecadado||0).toFixed(2)}"
+data-campaign-value="${esc(c.id)}"
+>
+<button class="btn small" type="button" data-save-value="${esc(c.id)}">Salvar valor</button>
+</td>
+<td>${esc(c.status)}</td>
+<td class="admin-action-cell">
+${c.status!=="aprovada"?`<button class="btn small" type="button" data-campaign-action="aprovada" data-id="${esc(c.id)}">Aprovar</button>`:""}
+${c.status!=="recusada"?`<button class="btn danger small" type="button" data-campaign-action="recusada" data-id="${esc(c.id)}">Rejeitar</button>`:""}
+</td>
+</tr>`).join("")}
+</tbody>
+</table>`;
+}
+
+/* Um único evento controla salvar valor, aprovar e recusar. */
+$("adminCampaigns").addEventListener("click",async e=>{
+if(!isAdmin)return;
+
+/* SALVAR VALOR ARRECADADO */
+const saveButton=e.target.closest("[data-save-value]");
+if(saveButton){
+const id=saveButton.dataset.saveValue;
+const input=$("adminCampaigns").querySelector(`[data-campaign-value="${CSS.escape(id)}"]`);
+if(!input)return;
+
+const value=Number(input.value);
+if(!Number.isFinite(value)||value<0){
+alert("Digite um valor válido, igual ou maior que zero.");
+input.focus();
+return;
+}
+
+if(!confirm("Confirma atualizar o valor arrecadado desta campanha para "+money(value)+"?"))return;
+
+saveButton.disabled=true;
+saveButton.textContent="Salvando...";
+
+const {error}=await db.from("campanhas")
+.update({valor_arrecadado:value})
+.eq("id",id);
+
+if(error){
+alert("Não foi possível atualizar o valor. "+error.message);
+saveButton.disabled=false;
+saveButton.textContent="Salvar valor";
+return;
+}
+
+await Promise.all([loadAdminCampaigns(),loadCampaigns()]);
+toast("Valor arrecadado atualizado com sucesso! 💙");
+return;
+}
+
+/* APROVAR OU RECUSAR CAMPANHA */
+const actionButton=e.target.closest("[data-campaign-action]");
+if(!actionButton)return;
+
+const newStatus=actionButton.dataset.campaignAction;
+const statusText=newStatus==="aprovada"?"aprovar":"recusar";
+
+if(!confirm("Tem certeza de que deseja "+statusText+" esta campanha?"))return;
+
+actionButton.disabled=true;
+const {error}=await db.from("campanhas")
+.update({status:newStatus})
+.eq("id",actionButton.dataset.id);
+
+if(error){
+alert("Não foi possível atualizar o status: "+error.message);
+actionButton.disabled=false;
+return;
+}
+
+await Promise.all([loadAdminCampaigns(),loadCampaigns()]);
+toast(newStatus==="aprovada"?"Campanha aprovada!":"Campanha recusada.");
+});
+
+async function loadAdminDonations(){
+const box=$("adminDonations");
+const {data,error}=await db.from("doacoes")
+.select("id,campanha_id,nome_doador,valor,status,criado_em,pagamento_id")
+.order("criado_em",{ascending:false}).limit(200);
+
+if(error){box.textContent="Não foi possível consultar doações: "+error.message;return}
+if(!data?.length){
+box.textContent="Nenhuma doação registrada. Como o Pix é fixo, pagamentos externos precisam ser conferidos e registrados manualmente.";
+return;
+}
+
+box.innerHTML=`<table>
+<thead><tr><th>Doador</th><th>Destino</th><th>Valor</th><th>Status</th><th>Data</th></tr></thead>
+<tbody>
+${data.map(d=>`<tr>
+<td>${esc(d.nome_doador||"Anônimo")}</td>
+<td>${d.campanha_id?"Campanha":"Caixa central"}</td>
+<td>${money(d.valor)}</td>
+<td>${esc(d.status)}</td>
+<td>${d.criado_em?new Date(d.criado_em).toLocaleString("pt-BR"):"—"}</td>
+</tr>`).join("")}
+</tbody>
+</table>`;
+}
+
+async function loadFinance(){
+const {data,error}=await db.rpc("obter_resumo_publico");
+if(error){
+$("publicFinance").textContent="Indicadores financeiros ainda estão sendo configurados.";
+return;
+}
+const r=Array.isArray(data)?data[0]:data;
+if(!r)return;
+const confirmed=Number(r.doacoes_confirmadas||0);
+const raised=Number(r.total_arrecadado||0);
+$("statConfirmed").textContent=confirmed;
+$("statTotal").textContent=money(raised);
+$("statPending").textContent=Number(r.doacoes_pendentes||0);
+$("statPendingTotal").textContent=money(r.total_pendente||0);
+$("publicFinance").textContent=`Doações registradas: ${confirmed} | Total informado: ${money(raised)}`;
+}
+
+$("movementForm").addEventListener("submit",async e=>{
+e.preventDefault();
+if(!isAdmin)return;
+const b=$("movementButton");
+b.disabled=true;
+try{
+const row={
+tipo:$("movementType").value,
+descricao:$("movementDescription").value.trim(),
+valor:Number($("movementValue").value),
+comprovante_url:$("movementProof").value.trim()||null
+};
+const {error}=await db.from("movimentacoes").insert(row);
+if(error)throw error;
+$("movementForm").reset();
+msg("movementMessage","Movimentação registrada.");
+await loadAdminMovements();
+}catch(err){
+msg("movementMessage",err.message,true);
+}finally{
+b.disabled=false;
+}
+});
+
+async function loadAdminMovements(){
+const box=$("adminMovements");
+const {data,error}=await db.from("movimentacoes").select("*").order("criado_em",{ascending:false});
+if(error){box.textContent="Erro: "+error.message;return}
+if(!data?.length){box.textContent="Nenhuma movimentação registrada.";return}
+
+box.innerHTML=`<table>
+<thead><tr><th>Tipo</th><th>Descrição</th><th>Valor</th><th>Data</th><th>Comprovante</th></tr></thead>
+<tbody>
+${data.map(m=>`<tr>
+<td>${esc(m.tipo)}</td>
+<td>${esc(m.descricao)}</td>
+<td>${money(m.valor)}</td>
+<td>${m.criado_em?new Date(m.criado_em).toLocaleDateString("pt-BR"):"—"}</td>
+<td>${m.comprovante_url?`<a href="${esc(m.comprovante_url)}" target="_blank" rel="noopener">Visualizar</a>`:"—"}</td>
+</tr>`).join("")}
+</tbody>
+</table>`;
+}
+
+async function initialize(){
+await loadCampaigns();
+const {data}=await db.auth.getSession();
+currentUser=data?.session?.user||null;
+
+if(currentUser&&await checkAdmin()){
+isAdmin=true;
+$("adminLoginArea").classList.add("hidden");
+$("adminArea").classList.remove("hidden");
+$("adminIdentity").textContent="Administrador conectado: "+currentUser.email;
+await loadAdminData();
+}else if(currentUser){
+await db.auth.signOut();
+currentUser=null;
+}
+
+db.auth.onAuthStateChange((_event,session)=>{
+currentUser=session?.user||null;
+setTimeout(async()=>{
+if(!currentUser){
+isAdmin=false;
+$("adminArea").classList.add("hidden");
+$("adminLoginArea").classList.remove("hidden");
+return;
+}
+if(await checkAdmin()){
+isAdmin=true;
+$("adminLoginArea").classList.add("hidden");
+$("adminArea").classList.remove("hidden");
+$("adminIdentity").textContent="Administrador conectado: "+currentUser.email;
+await loadAdminData();
+}else{
+isAdmin=false;
+await db.auth.signOut();
+}
+},0);
+});
+}
+
+initialize();
+</script>
+</body>
+</html>
 </div>
 </div>
 </section>
