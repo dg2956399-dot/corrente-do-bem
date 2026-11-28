@@ -656,19 +656,38 @@ nav{order:3;width:100%;justify-content:center}
 </div>
 </div>
 
+
 <div class="modal" id="donationModal" role="dialog" aria-modal="true">
-<div class="modal-box">
-<div class="modal-top"><h2>💙 Faça sua doação</h2><button class="modal-close" data-close="donationModal">Fechar</button></div>
-<p id="donationContext" class="hint">Sua contribuição ajuda a Corrente do Bem.</p>
-<div style="text-align:center;padding:12px 0">
-<h3 style="color:var(--blue)">Doe pelo Pix</h3><p class="hint">Escaneie o QR Code pelo aplicativo do seu banco.</p>
-<div id="pixQr" class="pix-qr" role="img" aria-label="QR Code Pix para doação"></div>
-<h3 style="color:var(--blue);margin-top:15px">Pix Copia e Cola</h3>
-<div id="pixCopyCode" class="pix-code"></div>
-<button class="btn" id="copyPixButton" type="button" style="width:100%">📋 COPIAR CÓDIGO PIX</button>
-<p class="hint" style="margin-top:14px">Obrigado por fazer parte dessa corrente de solidariedade! 💙</p>
-</div>
-</div>
+  <div class="modal-box">
+    <div class="modal-top">
+      <h2>💙 Faça sua doação</h2>
+      <button class="modal-close" data-close="donationModal">Fechar</button>
+    </div>
+
+    <p id="donationContext" class="hint">
+      Sua contribuição ajuda a Corrente do Bem.
+    </p>
+
+    <div style="text-align:center;padding:12px 0">
+      <h3 style="color:var(--blue)">Doe pelo Pix</h3>
+      <p class="hint">Escaneie o QR Code pelo aplicativo do seu banco.</p>
+
+      <div id="pixQr" class="pix-qr" role="img"
+           aria-label="QR Code Pix para doação"></div>
+
+      <h3 style="color:var(--blue);margin-top:15px">Pix Copia e Cola</h3>
+
+      <div id="pixCopyCode" class="pix-code"></div>
+
+      <button class="btn" id="copyPixButton" type="button" style="width:100%">
+        📋 COPIAR CÓDIGO PIX
+      </button>
+
+      <p class="hint" style="margin-top:14px">
+        Obrigado por fazer parte dessa corrente de solidariedade! 💙
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="modal" id="detailModal" role="dialog" aria-modal="true">
